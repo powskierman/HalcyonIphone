@@ -20,7 +20,7 @@ struct ThermometerScaleView: View {
     }
 
     private func tickMark(forIndex index: Int, totalTicks: Int, geometry: GeometryProxy) -> some View {
-        let outerMargin: CGFloat = 10 // Margin outside the ThermometerDialView
+        let outerMargin: CGFloat = -30 // Margin outside the ThermometerDialView
         let scaleDiameter = min(geometry.size.width, geometry.size.height) + outerMargin
         let radius = scaleDiameter / 2
         let angle = (Double(index) / Double(totalTicks)) * 360.0 + 180
@@ -34,7 +34,7 @@ struct ThermometerScaleView: View {
     }
 
     private func temperatureMarking(text: String, at angle: Double, geometry: GeometryProxy) -> some View {
-        let outerMargin: CGFloat = 10 // Adjust this margin to move the digits further out if needed
+        let outerMargin: CGFloat = -10 // Adjust this margin to move the digits further out if needed
         let scaleDiameter = min(geometry.size.width, geometry.size.height) // Diameter of the scale
         let radius = (scaleDiameter / 2) + outerMargin // Increase radius for text positioning
         let adjustedAngle = angle.truncatingRemainder(dividingBy: 360)

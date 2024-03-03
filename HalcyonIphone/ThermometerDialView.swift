@@ -48,6 +48,15 @@ struct ThermometerDialView: View {
                                      startPoint: .leading,
                                      endPoint: .trailing))
                 .frame(width: innerDialSize, height: innerDialSize)
+            //           Temperature Setpoint
+                      Circle()
+                          .fill(LinearGradient(colors: [Color("Temperature Setpoint 1"), Color("Temperature Setpoint 2")],
+                                               startPoint: .leading,
+                                               endPoint: .trailing))
+                          .frame(width: setpointSize, height: setpointSize)
+                          .frame(width: innerDialSize, height: innerDialSize, alignment: .top)
+                          .rotationEffect(.degrees(degrees + 180))
+                          .animation(.easeInOut(duration: 0.5), value: degrees)
         }
     }
 }
