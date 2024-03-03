@@ -12,6 +12,7 @@ struct FujitsuIphoneApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(ClimateViewModel.shared)
         }
     }
 }

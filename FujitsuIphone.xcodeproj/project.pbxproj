@@ -11,7 +11,33 @@
 		D0307FFB2B940D4800545001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0307FFA2B940D4800545001 /* ContentView.swift */; };
 		D0307FFD2B940D4900545001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0307FFC2B940D4900545001 /* Assets.xcassets */; };
 		D03080002B940D4900545001 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0307FFF2B940D4900545001 /* Preview Assets.xcassets */; };
+		D03080072B940DB400545001 /* ClimateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03080062B940DB400545001 /* ClimateViewModel.swift */; };
+		D030800A2B940E1200545001 /* HassFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; };
+		D030800B2B940E1200545001 /* HassFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D030800F2B940E6500545001 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D030800E2B940E6500545001 /* Starscream */; };
+		D03080112B940EAF00545001 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03080102B940EAF00545001 /* Enums.swift */; };
+		D03080132B940EBA00545001 /* HassAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03080122B940EBA00545001 /* HassAPIService.swift */; };
+		D03080152B940F0000545001 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = D03080142B940F0000545001 /* Secrets.plist */; };
+		D03080172B940F4400545001 /* thermostat.svg in Resources */ = {isa = PBXBuildFile; fileRef = D03080162B940F4400545001 /* thermostat.svg */; };
+		D03080192B940F8400545001 /* ThermostatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03080182B940F8400545001 /* ThermostatView.swift */; };
+		D030801B2B940FA700545001 /* ThermostatScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030801A2B940FA700545001 /* ThermostatScaleView.swift */; };
+		D030801D2B940FAE00545001 /* ThermometerDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030801C2B940FAE00545001 /* ThermometerDialView.swift */; };
+		D030801F2B940FB500545001 /* ThermostatModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D030801E2B940FB500545001 /* ThermostatModeView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D030800C2B940E1200545001 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D030800B2B940E1200545001 /* HassFramework.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D0307FF52B940D4800545001 /* FujitsuIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FujitsuIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +45,16 @@
 		D0307FFA2B940D4800545001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0307FFC2B940D4900545001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0307FFF2B940D4900545001 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D03080062B940DB400545001 /* ClimateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimateViewModel.swift; sourceTree = "<group>"; };
+		D03080092B940E1200545001 /* HassFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HassFramework.xcframework; path = ../Frameworks/HassFramework/HassFramework.xcframework; sourceTree = "<group>"; };
+		D03080102B940EAF00545001 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		D03080122B940EBA00545001 /* HassAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HassAPIService.swift; sourceTree = "<group>"; };
+		D03080142B940F0000545001 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		D03080162B940F4400545001 /* thermostat.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = thermostat.svg; sourceTree = "<group>"; };
+		D03080182B940F8400545001 /* ThermostatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatView.swift; sourceTree = "<group>"; };
+		D030801A2B940FA700545001 /* ThermostatScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatScaleView.swift; sourceTree = "<group>"; };
+		D030801C2B940FAE00545001 /* ThermometerDialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermometerDialView.swift; sourceTree = "<group>"; };
+		D030801E2B940FB500545001 /* ThermostatModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatModeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D030800A2B940E1200545001 /* HassFramework.xcframework in Frameworks */,
+				D030800F2B940E6500545001 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +75,7 @@
 			children = (
 				D0307FF72B940D4800545001 /* FujitsuIphone */,
 				D0307FF62B940D4800545001 /* Products */,
+				D03080082B940E1200545001 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +90,17 @@
 		D0307FF72B940D4800545001 /* FujitsuIphone */ = {
 			isa = PBXGroup;
 			children = (
+				D03080142B940F0000545001 /* Secrets.plist */,
+				D03080102B940EAF00545001 /* Enums.swift */,
+				D03080122B940EBA00545001 /* HassAPIService.swift */,
 				D0307FF82B940D4800545001 /* FujitsuIphoneApp.swift */,
 				D0307FFA2B940D4800545001 /* ContentView.swift */,
+				D03080182B940F8400545001 /* ThermostatView.swift */,
+				D030801A2B940FA700545001 /* ThermostatScaleView.swift */,
+				D030801C2B940FAE00545001 /* ThermometerDialView.swift */,
+				D030801E2B940FB500545001 /* ThermostatModeView.swift */,
+				D03080062B940DB400545001 /* ClimateViewModel.swift */,
+				D03080162B940F4400545001 /* thermostat.svg */,
 				D0307FFC2B940D4900545001 /* Assets.xcassets */,
 				D0307FFE2B940D4900545001 /* Preview Content */,
 			);
@@ -67,6 +115,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D03080082B940E1200545001 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D03080092B940E1200545001 /* HassFramework.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,12 +133,16 @@
 				D0307FF12B940D4800545001 /* Sources */,
 				D0307FF22B940D4800545001 /* Frameworks */,
 				D0307FF32B940D4800545001 /* Resources */,
+				D030800C2B940E1200545001 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FujitsuIphone;
+			packageProductDependencies = (
+				D030800E2B940E6500545001 /* Starscream */,
+			);
 			productName = FujitsuIphone;
 			productReference = D0307FF52B940D4800545001 /* FujitsuIphone.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +171,9 @@
 				Base,
 			);
 			mainGroup = D0307FEC2B940D4800545001;
+			packageReferences = (
+				D030800D2B940E6500545001 /* XCRemoteSwiftPackageReference "Starscream" */,
+			);
 			productRefGroup = D0307FF62B940D4800545001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03080002B940D4900545001 /* Preview Assets.xcassets in Resources */,
+				D03080152B940F0000545001 /* Secrets.plist in Resources */,
 				D0307FFD2B940D4900545001 /* Assets.xcassets in Resources */,
+				D03080172B940F4400545001 /* thermostat.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +202,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D030801B2B940FA700545001 /* ThermostatScaleView.swift in Sources */,
 				D0307FFB2B940D4800545001 /* ContentView.swift in Sources */,
+				D03080192B940F8400545001 /* ThermostatView.swift in Sources */,
+				D03080072B940DB400545001 /* ClimateViewModel.swift in Sources */,
+				D03080132B940EBA00545001 /* HassAPIService.swift in Sources */,
+				D030801F2B940FB500545001 /* ThermostatModeView.swift in Sources */,
+				D030801D2B940FAE00545001 /* ThermometerDialView.swift in Sources */,
+				D03080112B940EAF00545001 /* Enums.swift in Sources */,
 				D0307FF92B940D4800545001 /* FujitsuIphoneApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +416,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D030800D2B940E6500545001 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D030800E2B940E6500545001 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D030800D2B940E6500545001 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0307FED2B940D4800545001 /* Project object */;
 }
