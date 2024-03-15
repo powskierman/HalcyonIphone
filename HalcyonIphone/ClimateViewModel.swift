@@ -52,3 +52,20 @@ class ClimateViewModel: ObservableObject {
     
     // Add other necessary functions from WatchManager if needed
 }
+extension ClimateViewModel {
+    public func updateHvacMode(entityId: String, newMode: HvacModes) {
+        // Assuming you have a method in HassAPIService to specifically update HVAC mode
+        // This method will likely differ; adjust according to your actual implementation
+        self.clientService.sendCommand(entityId: entityId, hvacMode: newMode, temperature: self.tempSet) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("HVAC mode updated successfully for \(entityId)")
+                case .failure(let error):
+                    print("Failed to update HVAC mode for \(entityId): \(error)")
+                    self.errorMessage = "Failed to update HVAC mode for \(entityId): \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+}

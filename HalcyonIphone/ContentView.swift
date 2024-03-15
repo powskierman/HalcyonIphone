@@ -72,6 +72,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(ClimateViewModel()) // This is where you add the environment object
+        ContentView().environmentObject(ClimateViewModel())
     }
 }

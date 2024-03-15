@@ -73,6 +73,7 @@
 		D0307FEC2B940D4800545001 = {
 			isa = PBXGroup;
 			children = (
+				D08453522B953E8900555C64 /* Secrets.plist */,
 				D084534E2B953E8900555C64 /* Assets.xcassets */,
 				D084534C2B953E8900555C64 /* ClimateViewModel.swift */,
 				D084534A2B953E8900555C64 /* ContentView.swift */,
@@ -80,7 +81,6 @@
 				D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */,
 				D08453502B953E8900555C64 /* HassAPIService.swift */,
 				D08453562B953E8900555C64 /* Preview Content */,
-				D08453522B953E8900555C64 /* Secrets.plist */,
 				D084534B2B953E8900555C64 /* ThermometerDialView.swift */,
 				D084534D2B953E8900555C64 /* thermostat.svg */,
 				D084534F2B953E8900555C64 /* ThermostatModeView.swift */,

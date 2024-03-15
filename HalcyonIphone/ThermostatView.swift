@@ -64,10 +64,14 @@ struct ThermostatView: View {
                             }
                     )
                 
-                ThermostatModeView(temperature: CGFloat(temperature), mode: $mode)
-            }
-            .onChange(of: temperature) { newTemperature in
-                postTemperatureUpdate(newTemperature: newTemperature)
+                ThermostatModeView(
+                    temperature: CGFloat(temperature),
+                    entityId: room.entityId, // Make sure your Room type can provide an entityId
+                    mode: $mode
+                )
+                .onChange(of: temperature) { newTemperature in
+                    postTemperatureUpdate(newTemperature: newTemperature)
+                }
             }
         }
     }
