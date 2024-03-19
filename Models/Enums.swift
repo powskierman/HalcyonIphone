@@ -30,13 +30,44 @@ enum Room: String, CaseIterable {
             return "climate.halcyon_salon"
         case .amis:
             return "climate.halcyon_amis"
-            
-            var entityId: String {
-                "climate.halcyon_\(self.rawValue.lowercased())"
-            }
         }
     }
 }
+
+enum Setting: String, CaseIterable {
+    case fan = "Fan"
+    case power = "Powerful"
+    case eco = "Eco"
+    case swing = "Swing"
+    case set = "Set"
+    
+//    var entityId: String {
+//        switch self {
+//        case .fan:
+//            return "climate.set_fan_mode"
+//        case .tvRoom:
+//            return "climate.halcyon_tvRoom"
+//        case .cuisine:
+//            return "climate.halcyon_cuisine"
+//        case .salon:
+//            return "climate.halcyon_salon"
+//        case .amis:
+//            return "climate.halcyon_amis"
+//        }
+//    }
+}
+
+enum FanMode: String, CaseIterable, Identifiable {
+    case on = "ON"
+    case off = "OFF"
+    case auto = "AUTO"
+    case low = "LOW"
+    case medium = "MEDIUM"
+    case high = "HIGH"
+
+    var id: String { self.rawValue }
+}
+
     enum HvacModes: String, CaseIterable {
         case off, heat, cool, dry, fan_only
         

@@ -2,8 +2,8 @@ import Foundation
 import Combine
 import HassFramework
 
-class ClimateViewModel: ObservableObject {
-    static let shared = ClimateViewModel()
+class HalcyonViewModel: ObservableObject {
+    static let shared = HalcyonViewModel()
     
     // Observable properties
     @Published var currentEntityId: String = ""
@@ -52,7 +52,7 @@ class ClimateViewModel: ObservableObject {
     
     // Add other necessary functions from WatchManager if needed
 }
-extension ClimateViewModel {
+extension HalcyonViewModel {
     public func updateHvacMode(entityId: String, newMode: HvacModes) {
         // Assuming you have a method in HassAPIService to specifically update HVAC mode
         // This method will likely differ; adjust according to your actual implementation

@@ -4,7 +4,7 @@ struct ThermostatView: View {
     @Binding var temperature: Double
     @Binding var mode: HvacModes
     var room: Room
-    @EnvironmentObject var climateService: ClimateViewModel
+    @EnvironmentObject var climateService: HalcyonViewModel
     
     private let baseRingSize: CGFloat = 340
     private let baseOuterDialSize: CGFloat = 320
@@ -95,6 +95,6 @@ struct ThermometerView_Previews: PreviewProvider {
             mode: .constant(.fan_only),
             room: .chambre
         )
-        .environmentObject(ClimateViewModel())
+        .environmentObject(HalcyonViewModel())
     }
 }

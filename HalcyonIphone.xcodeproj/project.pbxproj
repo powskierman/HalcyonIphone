@@ -10,9 +10,14 @@
 		D030800A2B940E1200545001 /* HassFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; };
 		D030800B2B940E1200545001 /* HassFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D030800F2B940E6500545001 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D030800E2B940E6500545001 /* Starscream */; };
+		D0705A682BA62EB700175B93 /* RangeUISlider in Frameworks */ = {isa = PBXBuildFile; productRef = D0705A672BA62EB700175B93 /* RangeUISlider */; };
+		D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */; };
+		D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A882BA7647900175B93 /* BackgroundModifier.swift */; };
+		D079846C2BA79FC700D098FA /* SliderTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079846B2BA79FC700D098FA /* SliderTestView.swift */; };
+		D079846E2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */; };
 		D08453582B953E8900555C64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534A2B953E8900555C64 /* ContentView.swift */; };
 		D08453592B953E8900555C64 /* ThermometerDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534B2B953E8900555C64 /* ThermometerDialView.swift */; };
-		D084535A2B953E8900555C64 /* ClimateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534C2B953E8900555C64 /* ClimateViewModel.swift */; };
+		D084535A2B953E8900555C64 /* HalcyonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534C2B953E8900555C64 /* HalcyonViewModel.swift */; };
 		D084535B2B953E8900555C64 /* thermostat.svg in Resources */ = {isa = PBXBuildFile; fileRef = D084534D2B953E8900555C64 /* thermostat.svg */; };
 		D084535C2B953E8900555C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D084534E2B953E8900555C64 /* Assets.xcassets */; };
 		D084535D2B953E8900555C64 /* ThermostatModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534F2B953E8900555C64 /* ThermostatModeView.swift */; };
@@ -23,6 +28,7 @@
 		D08453622B953E8900555C64 /* ThermostatScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08453542B953E8900555C64 /* ThermostatScaleView.swift */; };
 		D08453632B953E8900555C64 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08453552B953E8900555C64 /* Enums.swift */; };
 		D08453642B953E8900555C64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08453572B953E8900555C64 /* Preview Assets.xcassets */; };
+		D0C9C2E22BA6073400611A92 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9C2E12BA6073400611A92 /* OtherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,19 +48,24 @@
 /* Begin PBXFileReference section */
 		D0307FF52B940D4800545001 /* HalcyonIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalcyonIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03080092B940E1200545001 /* HassFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HassFramework.xcframework; path = ../Frameworks/HassFramework/HassFramework.xcframework; sourceTree = "<group>"; };
-		D084534A2B953E8900555C64 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = HalcyonIphone/ContentView.swift; sourceTree = "<group>"; };
-		D084534B2B953E8900555C64 /* ThermometerDialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThermometerDialView.swift; path = HalcyonIphone/ThermometerDialView.swift; sourceTree = "<group>"; };
-		D084534C2B953E8900555C64 /* ClimateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClimateViewModel.swift; path = HalcyonIphone/ClimateViewModel.swift; sourceTree = "<group>"; };
+		D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonButtonView.swift; sourceTree = "<group>"; };
+		D0705A882BA7647900175B93 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
+		D079846B2BA79FC700D098FA /* SliderTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTestView.swift; sourceTree = "<group>"; };
+		D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonSliderHandleView.swift; sourceTree = "<group>"; };
+		D084534A2B953E8900555C64 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D084534B2B953E8900555C64 /* ThermometerDialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermometerDialView.swift; sourceTree = "<group>"; };
+		D084534C2B953E8900555C64 /* HalcyonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalcyonViewModel.swift; sourceTree = "<group>"; };
 		D084534D2B953E8900555C64 /* thermostat.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = thermostat.svg; path = HalcyonIphone/thermostat.svg; sourceTree = "<group>"; };
 		D084534E2B953E8900555C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HalcyonIphone/Assets.xcassets; sourceTree = "<group>"; };
-		D084534F2B953E8900555C64 /* ThermostatModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThermostatModeView.swift; path = HalcyonIphone/ThermostatModeView.swift; sourceTree = "<group>"; };
-		D08453502B953E8900555C64 /* HassAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HassAPIService.swift; path = HalcyonIphone/HassAPIService.swift; sourceTree = "<group>"; };
-		D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FujitsuIphoneApp.swift; path = HalcyonIphone/FujitsuIphoneApp.swift; sourceTree = "<group>"; };
-		D08453522B953E8900555C64 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Secrets.plist; path = HalcyonIphone/Secrets.plist; sourceTree = "<group>"; };
-		D08453532B953E8900555C64 /* ThermostatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThermostatView.swift; path = HalcyonIphone/ThermostatView.swift; sourceTree = "<group>"; };
-		D08453542B953E8900555C64 /* ThermostatScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ThermostatScaleView.swift; path = HalcyonIphone/ThermostatScaleView.swift; sourceTree = "<group>"; };
-		D08453552B953E8900555C64 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = HalcyonIphone/Enums.swift; sourceTree = "<group>"; };
+		D084534F2B953E8900555C64 /* ThermostatModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatModeView.swift; sourceTree = "<group>"; };
+		D08453502B953E8900555C64 /* HassAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HassAPIService.swift; sourceTree = "<group>"; };
+		D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FujitsuIphoneApp.swift; sourceTree = "<group>"; };
+		D08453522B953E8900555C64 /* Secrets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		D08453532B953E8900555C64 /* ThermostatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatView.swift; sourceTree = "<group>"; };
+		D08453542B953E8900555C64 /* ThermostatScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatScaleView.swift; sourceTree = "<group>"; };
+		D08453552B953E8900555C64 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		D08453572B953E8900555C64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0C9C2E12BA6073400611A92 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D030800A2B940E1200545001 /* HassFramework.xcframework in Frameworks */,
+				D0705A682BA62EB700175B93 /* RangeUISlider in Frameworks */,
 				D030800F2B940E6500545001 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,19 +85,13 @@
 		D0307FEC2B940D4800545001 = {
 			isa = PBXGroup;
 			children = (
+				D0C9C2E32BA6078800611A92 /* Views */,
+				D0C9C2E42BA607A800611A92 /* Models */,
+				D0C9C2E52BA607CC00611A92 /* ViewModels */,
 				D08453522B953E8900555C64 /* Secrets.plist */,
 				D084534E2B953E8900555C64 /* Assets.xcassets */,
-				D084534C2B953E8900555C64 /* ClimateViewModel.swift */,
-				D084534A2B953E8900555C64 /* ContentView.swift */,
-				D08453552B953E8900555C64 /* Enums.swift */,
-				D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */,
-				D08453502B953E8900555C64 /* HassAPIService.swift */,
 				D08453562B953E8900555C64 /* Preview Content */,
-				D084534B2B953E8900555C64 /* ThermometerDialView.swift */,
 				D084534D2B953E8900555C64 /* thermostat.svg */,
-				D084534F2B953E8900555C64 /* ThermostatModeView.swift */,
-				D08453542B953E8900555C64 /* ThermostatScaleView.swift */,
-				D08453532B953E8900555C64 /* ThermostatView.swift */,
 				D0307FF62B940D4800545001 /* Products */,
 				D03080082B940E1200545001 /* Frameworks */,
 			);
@@ -116,6 +122,41 @@
 			path = "HalcyonIphone/Preview Content";
 			sourceTree = "<group>";
 		};
+		D0C9C2E32BA6078800611A92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D084534A2B953E8900555C64 /* ContentView.swift */,
+				D0C9C2E12BA6073400611A92 /* OtherView.swift */,
+				D08453532B953E8900555C64 /* ThermostatView.swift */,
+				D084534F2B953E8900555C64 /* ThermostatModeView.swift */,
+				D084534B2B953E8900555C64 /* ThermometerDialView.swift */,
+				D08453542B953E8900555C64 /* ThermostatScaleView.swift */,
+				D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */,
+				D079846B2BA79FC700D098FA /* SliderTestView.swift */,
+				D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0C9C2E42BA607A800611A92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D08453552B953E8900555C64 /* Enums.swift */,
+				D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0C9C2E52BA607CC00611A92 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D08453502B953E8900555C64 /* HassAPIService.swift */,
+				D084534C2B953E8900555C64 /* HalcyonViewModel.swift */,
+				D0705A882BA7647900175B93 /* BackgroundModifier.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +176,7 @@
 			name = HalcyonIphone;
 			packageProductDependencies = (
 				D030800E2B940E6500545001 /* Starscream */,
+				D0705A672BA62EB700175B93 /* RangeUISlider */,
 			);
 			productName = FujitsuIphone;
 			productReference = D0307FF52B940D4800545001 /* HalcyonIphone.app */;
@@ -167,6 +209,7 @@
 			mainGroup = D0307FEC2B940D4800545001;
 			packageReferences = (
 				D030800D2B940E6500545001 /* XCRemoteSwiftPackageReference "Starscream" */,
+				D0705A662BA62EB700175B93 /* XCRemoteSwiftPackageReference "RangeUISlider" */,
 			);
 			productRefGroup = D0307FF62B940D4800545001 /* Products */;
 			projectDirPath = "";
@@ -196,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D079846C2BA79FC700D098FA /* SliderTestView.swift in Sources */,
 				D08453582B953E8900555C64 /* ContentView.swift in Sources */,
-				D084535A2B953E8900555C64 /* ClimateViewModel.swift in Sources */,
+				D079846E2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift in Sources */,
+				D084535A2B953E8900555C64 /* HalcyonViewModel.swift in Sources */,
 				D08453622B953E8900555C64 /* ThermostatScaleView.swift in Sources */,
 				D08453612B953E8900555C64 /* ThermostatView.swift in Sources */,
 				D084535E2B953E8900555C64 /* HassAPIService.swift in Sources */,
@@ -205,6 +250,9 @@
 				D084535D2B953E8900555C64 /* ThermostatModeView.swift in Sources */,
 				D08453632B953E8900555C64 /* Enums.swift in Sources */,
 				D08453592B953E8900555C64 /* ThermometerDialView.swift in Sources */,
+				D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */,
+				D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */,
+				D0C9C2E22BA6073400611A92 /* OtherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,8 +393,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,8 +423,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -423,6 +469,14 @@
 				minimumVersion = 4.0.6;
 			};
 		};
+		D0705A662BA62EB700175B93 /* XCRemoteSwiftPackageReference "RangeUISlider" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/chicio/RangeUISlider.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -430,6 +484,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D030800D2B940E6500545001 /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
+		};
+		D0705A672BA62EB700175B93 /* RangeUISlider */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0705A662BA62EB700175B93 /* XCRemoteSwiftPackageReference "RangeUISlider" */;
+			productName = RangeUISlider;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

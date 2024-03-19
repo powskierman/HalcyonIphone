@@ -1,5 +1,15 @@
 {
+  "originHash" : "08f4c2b1f2981ede4c589d975b78cc97a6e41891d02e53446a8177cc24f0f0fa",
   "pins" : [
+    {
+      "identity" : "rangeuislider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chicio/RangeUISlider.git",
+      "state" : {
+        "revision" : "b1e8242eb7ab07051721a2d7b937cd75ca129ebf",
+        "version" : "4.0.1"
+      }
+    },
     {
       "identity" : "starscream",
       "kind" : "remoteSourceControl",
@@ -10,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

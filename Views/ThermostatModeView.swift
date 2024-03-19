@@ -9,7 +9,7 @@ struct ThermostatModeView: View {
     var temperature: CGFloat
     var entityId: String // Add this to know which room/entity you're controlling
     @Binding var mode: HvacModes
-    @EnvironmentObject var climateViewModel: ClimateViewModel
+    @EnvironmentObject var climateViewModel: HalcyonViewModel
 
     var body: some View {
         VStack {
