@@ -10,10 +10,11 @@
 		D030800A2B940E1200545001 /* HassFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; };
 		D030800B2B940E1200545001 /* HassFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D030800F2B940E6500545001 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D030800E2B940E6500545001 /* Starscream */; };
+		D03969D62BAE374A00DEDEDF /* Halcyon Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */; };
 		D0705A682BA62EB700175B93 /* RangeUISlider in Frameworks */ = {isa = PBXBuildFile; productRef = D0705A672BA62EB700175B93 /* RangeUISlider */; };
 		D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */; };
 		D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A882BA7647900175B93 /* BackgroundModifier.swift */; };
-		D079846C2BA79FC700D098FA /* SliderTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079846B2BA79FC700D098FA /* SliderTestView.swift */; };
+		D079846C2BA79FC700D098FA /* HeatPumpRangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079846B2BA79FC700D098FA /* HeatPumpRangeSlider.swift */; };
 		D079846E2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */; };
 		D08453582B953E8900555C64 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534A2B953E8900555C64 /* ContentView.swift */; };
 		D08453592B953E8900555C64 /* ThermometerDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D084534B2B953E8900555C64 /* ThermometerDialView.swift */; };
@@ -48,9 +49,10 @@
 /* Begin PBXFileReference section */
 		D0307FF52B940D4800545001 /* HalcyonIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalcyonIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03080092B940E1200545001 /* HassFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HassFramework.xcframework; path = ../Frameworks/HassFramework/HassFramework.xcframework; sourceTree = "<group>"; };
+		D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halcyon Logo.png"; sourceTree = "<group>"; };
 		D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonButtonView.swift; sourceTree = "<group>"; };
 		D0705A882BA7647900175B93 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
-		D079846B2BA79FC700D098FA /* SliderTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTestView.swift; sourceTree = "<group>"; };
+		D079846B2BA79FC700D098FA /* HeatPumpRangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatPumpRangeSlider.swift; sourceTree = "<group>"; };
 		D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonSliderHandleView.swift; sourceTree = "<group>"; };
 		D084534A2B953E8900555C64 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D084534B2B953E8900555C64 /* ThermometerDialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermometerDialView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		D0307FEC2B940D4800545001 = {
 			isa = PBXGroup;
 			children = (
+				D03969D42BAE372600DEDEDF /* Documents */,
 				D0C9C2E32BA6078800611A92 /* Views */,
 				D0C9C2E42BA607A800611A92 /* Models */,
 				D0C9C2E52BA607CC00611A92 /* ViewModels */,
@@ -113,6 +116,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D03969D42BAE372600DEDEDF /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
 		D08453562B953E8900555C64 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +143,7 @@
 				D084534B2B953E8900555C64 /* ThermometerDialView.swift */,
 				D08453542B953E8900555C64 /* ThermostatScaleView.swift */,
 				D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */,
-				D079846B2BA79FC700D098FA /* SliderTestView.swift */,
+				D079846B2BA79FC700D098FA /* HeatPumpRangeSlider.swift */,
 				D079846D2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift */,
 			);
 			path = Views;
@@ -226,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D08453642B953E8900555C64 /* Preview Assets.xcassets in Resources */,
+				D03969D62BAE374A00DEDEDF /* Halcyon Logo.png in Resources */,
 				D084535C2B953E8900555C64 /* Assets.xcassets in Resources */,
 				D08453602B953E8900555C64 /* Secrets.plist in Resources */,
 				D084535B2B953E8900555C64 /* thermostat.svg in Resources */,
@@ -239,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D079846C2BA79FC700D098FA /* SliderTestView.swift in Sources */,
+				D079846C2BA79FC700D098FA /* HeatPumpRangeSlider.swift in Sources */,
 				D08453582B953E8900555C64 /* ContentView.swift in Sources */,
 				D079846E2BA7CD1C00D098FA /* HalcyonSliderHandleView.swift in Sources */,
 				D084535A2B953E8900555C64 /* HalcyonViewModel.swift in Sources */,

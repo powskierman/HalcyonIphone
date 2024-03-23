@@ -1,76 +1,76 @@
-//
-//  HassClientService.swift
-//  Halcyon 2.0 Watch App
-//
-//  Created by Michel Lapointe on 2024-02-15.
-//
-
 import Foundation
 import HassFramework
 
 class HassAPIService: ObservableObject {
     static let shared = HassAPIService()
     private var restClient: HassRestClient
-
+    
     init() {
         self.restClient = HassRestClient.shared
     }
-
-    func sendCommand(entityId: String, hvacMode: HvacModes, temperature: Int, completion: @escaping (Result<HAEntity, Error>) -> Void) {
-        // Prepare the JSON payload directly
-        let payload: [String: Any] = [
-            "entity_id": entityId,
-            "temperature": temperature,
-            "hvac_mode": hvacMode.rawValue
-        ]
-
-        // Convert payload to Data
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload, options: []) else {
-            completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to encode request body"])))
+    
+    // This method allows sending commands with data that conforms to Encodable or is already a dictionary
+    func sendCommand(entityId: String, service: String, data: Any, completion: @escaping (Result<Void, Error>) -> Void) {
+        var jsonData: Data?
+        
+        if let data = data as? [String: HassRestClient.AnyEncodable] {
+            jsonData = try? JSONEncoder().encode(data)
+        } else if let data = data as? [String: Any] {
+            jsonData = try? JSONSerialization.data(withJSONObject: data, options: [])
+        }
+        
+        guard let jsonDataUnwrapped = jsonData else {
+            completion(.failure(NSError(domain: "HassAPIService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to encode data to JSON"])))
             return
         }
-
-        // Make sure to use the correct endpoint
-        let correctEndpoint = "api/services/climate/set_temperature"
-
-        // Directly call performRequest on HassRestClient
-        HassRestClient.shared.performRequest(endpoint: correctEndpoint, method: "POST", body: jsonData) { (result: Result<HAEntity, Error>) in
-            DispatchQueue.main.async {
-                completion(result)
+        
+        let endpoint = "api/services/\(service.replacingOccurrences(of: ".", with: "/"))"
+        
+        restClient.performRequest(endpoint: endpoint, method: "POST", body: jsonDataUnwrapped, expectingResponse: false) { (result: Result<EmptyResponse, Error>) in
+            switch result {
+            case .success(_):
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
-
+    
+    // Example method for updating temperature thresholds
+    func updateTemperatureThreshold(entityId: String, temperature: CGFloat, completion: @escaping (Result<Void, Error>) -> Void) {
+        let temperatureInt = Int(temperature)
+        
+        let commandData: [String: Any] = [
+            "entity_id": entityId,
+            "value": temperatureInt
+        ]
+        
+        sendCommand(entityId: entityId, service: "input_number.set_value", data: commandData, completion: completion)
+    }
+    
+    // Example method for updating fan mode
+    func updateFanModeForRoom(entityId: String, fanMode: FanMode, completion: @escaping (Result<Void, Error>) -> Void) {
+        let commandData: [String: Any] = [
+            "entity_id": entityId,
+            "fan_mode": fanMode.rawValue
+        ]
+        
+        sendCommand(entityId: entityId, service: "climate.set_fan_mode", data: commandData, completion: completion)
+    }
+    
     // Additional functionalities leveraging HassRestClient
     func fetchDeviceState(deviceId: String, completion: @escaping (Result<HassRestClient.DeviceState, Error>) -> Void) {
         restClient.fetchDeviceState(deviceId: deviceId, completion: completion)
     }
-
-    func callScript(entityId: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        restClient.callScript(entityId: entityId, completion: completion)
+    
+    func fetchEntityState(entityId: String, completion: @escaping (Result<HAEntity, Error>) -> Void) {
+        restClient.fetchState(entityId: entityId, completion: completion)
     }
     
-    func setHvacModeAndTemperature(for room: Room, mode: HvacModes, temperature: Int) {
-        // Prepare the command data including the temperature
-        let commandData: [String: HassRestClient.AnyEncodable] = [
-            "entity_id": HassRestClient.AnyEncodable(room.entityId),
-            "hvac_mode": HassRestClient.AnyEncodable(mode.rawValue),
-            "temperature": HassRestClient.AnyEncodable(temperature)
-        ]
-        
-        // Note: The service to set both the HVAC mode and temperature might differ or require separate calls
-        // depending on your Home Assistant setup. Assuming 'climate.set_temperature' can also accept 'hvac_mode':
-        _ = HassRestClient.DeviceCommand(service: "climate.set_temperature", entityId: room.entityId, data: commandData)
-        
-        // Use HassAPIService to send the command
-        HassAPIService.shared.sendCommand(entityId: room.entityId, hvacMode: mode, temperature: temperature) { result in
-
-            switch result {
-            case .success(_):
-                print("Successfully set \(room.rawValue) to \(mode.rawValue) at \(temperature)°C.")
-            case .failure(let error):
-                print("Failed to set HVAC mode and temperature for \(room.rawValue): \(error)")
-            }
-        }
+    func callScript(entityId: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        let commandData: [String: Any] = ["entity_id": entityId]
+        sendCommand(entityId: entityId, service: "script.turn_on", data: commandData, completion: completion)
     }
+    
+    struct EmptyResponse: Decodable {}
 }

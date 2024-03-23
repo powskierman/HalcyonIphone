@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel = HalcyonViewModel.shared
+
     @State private var selectedTemperature: Double = 22
     @State private var selectedRoom: Room = .chambre
     @State private var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
@@ -52,7 +54,7 @@ struct ContentView: View {
                                             // Action for the Temp button
                                             print("Temp button tapped")
                                         }) {
-                                            HalcyonButtonView(text: "Temp", outerButtonSize: 100)
+                                            HalcyonButtonView(text: viewModel.temperature, outerButtonSize: 100)
                                         }
                                         
                                         
@@ -61,12 +63,15 @@ struct ContentView: View {
                                         
                                         Button(action: {
                                             // Action for the Humidity button
-                                            print("Humidity button tapped")
+                                            viewModel.fetchSensorStates()
                                         }) {
-                                            HalcyonButtonView(text: "Humidity", outerButtonSize: 100)
+                                            HalcyonButtonView(text: viewModel.humidity, outerButtonSize: 100)
                                         }
                                         
                                         Spacer() // Pushes everything to the center
+                                    }
+                                    .onAppear {
+                                        viewModel.fetchSensorStates()
                                     }
                                     .padding(.bottom, 70) // Distance from the bottom
                                 }
@@ -89,7 +94,7 @@ struct ContentView: View {
                     .font(.title) // Adjust the size of the gear icon if needed
             })
             .sheet(isPresented: $showingSettings) {
-                    OtherView(selectedRoom: $selectedRoom) // Present the settings view as a sheet
+                OtherView(selectedRoom: $selectedRoom) // Present the settings view as a sheet
                         .presentationDetents([.fraction(0.6)])
                 }
             .applyBackground()
