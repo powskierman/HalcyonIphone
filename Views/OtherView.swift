@@ -99,15 +99,32 @@ struct OtherView: View {
                 }
                 .pickerStyle(WheelPickerStyle())
             }
- //           .navigationTitle("Select Fan Mode")
-            .navigationBarItems(trailing: Button("Done") { showingFanPicker = false })
+//            .navigationTitle("Select Fan Mode")
+            .navigationBarItems(trailing: Button("Done") {
+                showingFanPicker = false
+                // Here, it's assumed that `selectedRoom` can directly provide an entity ID suitable for Home Assistant.
+                // You may need to adjust `entityId` based on your actual entity naming convention in Home Assistant.
+                _ = "climate.\(selectedRoom.rawValue.lowercased())" // Modify this line as necessary to match your entity IDs
+                print("Selected fan mode: \(selectedFanMode.rawValue)")
+                HassAPIService.shared.updateFanModeForRoom(entityId: "climate.halcyon_chambre", fanMode: selectedFanMode) { result in
+                    switch result {
+                    case .success():
+                        print("Fan mode successfully updated to \(selectedFanMode.rawValue)")
+                    case .failure(let error):
+                        print("Failed to update fan mode: \(error)")
+                    }
+                
+                }
+            })
             .toolbar {
                 ToolbarItem(placement: .principal) { // 'principal' places it in the center
                     Text("Fan Mode").font(.headline)
                 }
-            }
+                }
         }
     }
+
+
 
     private var toolbarContent: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {

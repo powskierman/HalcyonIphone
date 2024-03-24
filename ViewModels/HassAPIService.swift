@@ -25,6 +25,7 @@ class HassAPIService: ObservableObject {
         }
         
         let endpoint = "api/services/\(service.replacingOccurrences(of: ".", with: "/"))"
+        print("Endpoint is: \(endpoint)")
         
         restClient.performRequest(endpoint: endpoint, method: "POST", body: jsonDataUnwrapped, expectingResponse: false) { (result: Result<EmptyResponse, Error>) in
             switch result {
@@ -50,11 +51,14 @@ class HassAPIService: ObservableObject {
     
     // Example method for updating fan mode
     func updateFanModeForRoom(entityId: String, fanMode: FanMode, completion: @escaping (Result<Void, Error>) -> Void) {
+        print("Updating fan mode for room with fan mode: \(fanMode.rawValue)")
         let commandData: [String: Any] = [
             "entity_id": entityId,
             "fan_mode": fanMode.rawValue
         ]
-        
+
+        print("Updating fan mode with data: \(commandData)")
+
         sendCommand(entityId: entityId, service: "climate.set_fan_mode", data: commandData, completion: completion)
     }
     

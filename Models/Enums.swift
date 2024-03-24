@@ -58,12 +58,11 @@ enum Setting: String, CaseIterable {
 }
 
 enum FanMode: String, CaseIterable, Identifiable {
-    case on = "ON"
-    case off = "OFF"
-    case auto = "AUTO"
-    case low = "LOW"
-    case medium = "MEDIUM"
-    case high = "HIGH"
+    case off = "quiet"
+    case auto = "auto"
+    case low = "low"
+    case medium = "medium"
+    case high = "high"
 
     var id: String { self.rawValue }
 }
