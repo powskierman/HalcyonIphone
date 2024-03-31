@@ -28,6 +28,10 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            if viewModel.isFetchingInitialStates {
+                // Display a loading indicator of your choice here
+                Text("Fetching room states...")
+            } else {
             GeometryReader { geometry in
                 ZStack {
                     VStack(spacing: 0) {
@@ -66,11 +70,10 @@ struct ContentView: View {
                                         
                                         Spacer() // Pushes everything to the center
                                     }
-                                    .onAppear {
-                                        viewModel.fetchSensorStates()
-                                        //                                   viewModel.fetchAndSetInitialState(entityId: "climate.halcyon_chambre")
-                                        viewModel.fetchAndSetInitialStates()
-                                    }
+                                    //                                    .onAppear {
+                                    //                                        viewModel.fetchSensorStates()
+                                    //                                        viewModel.fetchAndSetInitialStates()
+                                    //                                    }
                                     .padding(.bottom, 70) // Distance from the bottom
                                 }
                                 .tag(room)
@@ -96,6 +99,11 @@ struct ContentView: View {
                     .presentationDetents([.fraction(0.6)])
             }
             .applyBackground()
+        }
+    }
+        .onAppear {
+            viewModel.fetchSensorStates()
+            viewModel.fetchAndSetInitialStates()
         }
     }
     
