@@ -17,6 +17,8 @@ class HalcyonViewModel: ObservableObject {
     @Published var maxTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 23.0 }
     @Published var lowerValue: CGFloat = 0.3
     @Published var upperValue: CGFloat = 0.7
+    @Published var isFetchingInitialStates: Bool = false
+
     let minValue: CGFloat = 12.0
     let maxValue: CGFloat = 30.0
     @Published var errorMessage: String?
@@ -131,20 +133,37 @@ extension HalcyonViewModel {
 
 extension HalcyonViewModel {
     func fetchAndSetInitialStates() {
+        isFetchingInitialStates = true // Indicate loading has started
+        let dispatchGroup = DispatchGroup()
+
         Room.allCases.forEach { room in
             let entityId = room.entityId
-            clientService.fetchEntityState(entityId: entityId) { [weak self] result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let entity):
-                        let temperature = entity.attributes.temperature ?? 0
-                        let mode = HvacModes(rawValue: entity.state) ?? .off
-                        self?.roomStates[room] = (temperature, mode)
-                    case .failure(let error):
-                        print("Error fetching state for \(entityId): \(error)")
+            
+            // Check if the entityId corresponds to an existing entity
+            // For now, let's assume 'climate.halcyon_chambre' is the only existing entity
+            if entityId == "climate.halcyon_chambre" {
+                dispatchGroup.enter() // Enter only if entity exists
+
+                clientService.fetchEntityState(entityId: entityId) { [weak self] result in
+                    DispatchQueue.main.async {
+                        defer { dispatchGroup.leave() } // Leave on completion
+                        
+                        switch result {
+                        case .success(let entity):
+                            let temperature = entity.attributes.temperature ?? 22 // Use a sensible default
+                            let mode = HvacModes(rawValue: entity.state) ?? .off
+                            self?.roomStates[room] = (temperature, mode)
+                        case .failure(let error):
+                            print("Error fetching state for \(entityId): \(error)")
+                        }
                     }
                 }
             }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            self.isFetchingInitialStates = false // Indicate loading has finished
+            print("Finished fetching all sensor states.")
         }
     }
 }
