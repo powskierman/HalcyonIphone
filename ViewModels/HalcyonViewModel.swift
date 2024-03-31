@@ -20,24 +20,14 @@ class HalcyonViewModel: ObservableObject {
     let minValue: CGFloat = 12.0
     let maxValue: CGFloat = 30.0
     @Published var errorMessage: String?
-//    @Published var lastCallStatus: CallStatus = .pending
-//    @Published var hasErrorOccurred: Bool = false
     
     private let clientService: HassAPIService
-//    private var cancellables = Set<AnyCancellable>()
-    
     private var updateTimer: Timer?
     private let debounceInterval: TimeInterval = 0.5
     
     init(clientService: HassAPIService = .shared) {
         self.clientService = clientService
     }
-    
-//    // Function to cycle to the next HVAC mode and send an update to Home Assistant
-//    public func nextHvacMode() {
-//        halcyonMode = halcyonMode.next
-//        sendTemperatureUpdate(entityId: currentEntityId, mode: halcyonMode, temperature: tempSet)
-//    }
     
     // Function to update temperature and optionally HVAC mode in Home Assistant
     public func sendTemperatureUpdate(entityId: String, mode: HvacModes, temperature: Int) {
@@ -67,31 +57,6 @@ class HalcyonViewModel: ObservableObject {
         }
     }
     
-//     // Function to save the temperature value for a room from a slider position
-//    func setTemperature(_ temperature: Double, for room: Room, isMinTemperature: Bool) {
-//         if isMinTemperature {
-//             minTemperatureForRooms[room] = temperature
-//         } else {
-//             maxTemperatureForRooms[room] = temperature
-//         }
-//     }
-//     
-//     func getTemperature(for room: Room, isMinTemperature: Bool) -> Double {
-//         if isMinTemperature {
-//             return minTemperatureForRooms[room] ?? 17.0 // Provide a default value if needed
-//         } else {
-//             return maxTemperatureForRooms[room] ?? 23.0 // Provide a default value if needed
-//         }
-//     }
-     
-    
-//     // Method to fetch the min and max temperature for a room
-//     func getMinAndMaxTemperature(for room: Room) -> (min: Double, max: Double) {
-//         let min = minTemperatureForRooms[room] ?? 17.0 // Provide a default value
-//         let max = maxTemperatureForRooms[room] ?? 23.0 // Provide a default value
-//         return (min, max)
-//     }
-   
     func fetchSensorStates() {
         let sensorIds = ["sensor.nhtemp_temperature", "sensor.nhtemp_humidity"]
         let dispatchGroup = DispatchGroup()
@@ -163,28 +128,6 @@ extension HalcyonViewModel {
         }
     }
 }
-//extension HalcyonViewModel {
-//    func fetchAndSetInitialState(entityId: String) {
-//        clientService.fetchEntityState(entityId: entityId) { [weak self] result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success(let entity):
-//                    self?.currentEntityId = entityId
-//                    // Assuming "temperature" in entity.attributes reflects the desired setpoint temperature
-//                    if let temp = entity.attributes.additionalAttributes["temperature"] as? Double {
-//                        self?.temperature = "\(temp)°" // Setpoint temperature
-//                    }
-//                    self?.fanSpeed = entity.attributes.fanMode ?? "auto"
-//                    self?.halcyonMode = HvacModes(rawValue: entity.state) ?? .off
-//                    print("[fetchAndSetInitialState] entityId: \(entityId), temperature: \(entity.attributes.additionalAttributes["temperature"] ?? "Bad value")), Fan Speed: \(self?.fanSpeed ?? "none"), mode: \(self?.halcyonMode ?? .cool)")
-//
-//                case .failure(let error):
-//                    print("Error fetching initial state: \(error)")
-//                }
-//            }
-//        }
-//    }
-//}
 
 extension HalcyonViewModel {
     func fetchAndSetInitialStates() {

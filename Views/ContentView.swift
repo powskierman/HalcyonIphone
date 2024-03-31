@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = HalcyonViewModel.shared
-    
-//    @State private var selectedTemperature: Double = 22
     @State private var selectedRoom: Room = .chambre
     @State private var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
     @State private var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
