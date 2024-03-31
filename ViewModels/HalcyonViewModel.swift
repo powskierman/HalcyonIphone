@@ -7,6 +7,7 @@ class HalcyonViewModel: ObservableObject {
     
     // Observable properties
     @Published var currentEntityId: String = ""
+    @Published var roomStates: [Room: (temperature: Double, mode: HvacModes)] = [:]
     @Published var temperature: String = "Loading..."
     @Published var humidity: String = "Loading..."
     @Published var tempSet: Int = 22
@@ -19,11 +20,11 @@ class HalcyonViewModel: ObservableObject {
     let minValue: CGFloat = 12.0
     let maxValue: CGFloat = 30.0
     @Published var errorMessage: String?
-    @Published var lastCallStatus: CallStatus = .pending
-    @Published var hasErrorOccurred: Bool = false
+//    @Published var lastCallStatus: CallStatus = .pending
+//    @Published var hasErrorOccurred: Bool = false
     
     private let clientService: HassAPIService
-    private var cancellables = Set<AnyCancellable>()
+//    private var cancellables = Set<AnyCancellable>()
     
     private var updateTimer: Timer?
     private let debounceInterval: TimeInterval = 0.5
@@ -32,11 +33,11 @@ class HalcyonViewModel: ObservableObject {
         self.clientService = clientService
     }
     
-    // Function to cycle to the next HVAC mode and send an update to Home Assistant
-    public func nextHvacMode() {
-        halcyonMode = halcyonMode.next
-        sendTemperatureUpdate(entityId: currentEntityId, mode: halcyonMode, temperature: tempSet)
-    }
+//    // Function to cycle to the next HVAC mode and send an update to Home Assistant
+//    public func nextHvacMode() {
+//        halcyonMode = halcyonMode.next
+//        sendTemperatureUpdate(entityId: currentEntityId, mode: halcyonMode, temperature: tempSet)
+//    }
     
     // Function to update temperature and optionally HVAC mode in Home Assistant
     public func sendTemperatureUpdate(entityId: String, mode: HvacModes, temperature: Int) {
@@ -66,30 +67,30 @@ class HalcyonViewModel: ObservableObject {
         }
     }
     
-     // Function to save the temperature value for a room from a slider position
-    func setTemperature(_ temperature: Double, for room: Room, isMinTemperature: Bool) {
-         if isMinTemperature {
-             minTemperatureForRooms[room] = temperature
-         } else {
-             maxTemperatureForRooms[room] = temperature
-         }
-     }
-     
-     func getTemperature(for room: Room, isMinTemperature: Bool) -> Double {
-         if isMinTemperature {
-             return minTemperatureForRooms[room] ?? 17.0 // Provide a default value if needed
-         } else {
-             return maxTemperatureForRooms[room] ?? 23.0 // Provide a default value if needed
-         }
-     }
+//     // Function to save the temperature value for a room from a slider position
+//    func setTemperature(_ temperature: Double, for room: Room, isMinTemperature: Bool) {
+//         if isMinTemperature {
+//             minTemperatureForRooms[room] = temperature
+//         } else {
+//             maxTemperatureForRooms[room] = temperature
+//         }
+//     }
+//     
+//     func getTemperature(for room: Room, isMinTemperature: Bool) -> Double {
+//         if isMinTemperature {
+//             return minTemperatureForRooms[room] ?? 17.0 // Provide a default value if needed
+//         } else {
+//             return maxTemperatureForRooms[room] ?? 23.0 // Provide a default value if needed
+//         }
+//     }
      
     
-     // Method to fetch the min and max temperature for a room
-     func getMinAndMaxTemperature(for room: Room) -> (min: Double, max: Double) {
-         let min = minTemperatureForRooms[room] ?? 17.0 // Provide a default value
-         let max = maxTemperatureForRooms[room] ?? 23.0 // Provide a default value
-         return (min, max)
-     }
+//     // Method to fetch the min and max temperature for a room
+//     func getMinAndMaxTemperature(for room: Room) -> (min: Double, max: Double) {
+//         let min = minTemperatureForRooms[room] ?? 17.0 // Provide a default value
+//         let max = maxTemperatureForRooms[room] ?? 23.0 // Provide a default value
+//         return (min, max)
+//     }
    
     func fetchSensorStates() {
         let sensorIds = ["sensor.nhtemp_temperature", "sensor.nhtemp_humidity"]
@@ -135,8 +136,12 @@ class HalcyonViewModel: ObservableObject {
         }
     }
     
+    
+    
     // Add other necessary functions from WatchManager if needed
 }
+
+
 extension HalcyonViewModel {
     public func updateHvacMode(entityId: String, newMode: HvacModes) {
         // Prepare the command data for updating the HVAC mode
@@ -153,6 +158,48 @@ extension HalcyonViewModel {
                 case .failure(let error):
                     print("Failed to update HVAC mode for \(entityId): \(error)")
                     self.errorMessage = "Failed to update HVAC mode for \(entityId): \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+}
+//extension HalcyonViewModel {
+//    func fetchAndSetInitialState(entityId: String) {
+//        clientService.fetchEntityState(entityId: entityId) { [weak self] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let entity):
+//                    self?.currentEntityId = entityId
+//                    // Assuming "temperature" in entity.attributes reflects the desired setpoint temperature
+//                    if let temp = entity.attributes.additionalAttributes["temperature"] as? Double {
+//                        self?.temperature = "\(temp)°" // Setpoint temperature
+//                    }
+//                    self?.fanSpeed = entity.attributes.fanMode ?? "auto"
+//                    self?.halcyonMode = HvacModes(rawValue: entity.state) ?? .off
+//                    print("[fetchAndSetInitialState] entityId: \(entityId), temperature: \(entity.attributes.additionalAttributes["temperature"] ?? "Bad value")), Fan Speed: \(self?.fanSpeed ?? "none"), mode: \(self?.halcyonMode ?? .cool)")
+//
+//                case .failure(let error):
+//                    print("Error fetching initial state: \(error)")
+//                }
+//            }
+//        }
+//    }
+//}
+
+extension HalcyonViewModel {
+    func fetchAndSetInitialStates() {
+        Room.allCases.forEach { room in
+            let entityId = room.entityId
+            clientService.fetchEntityState(entityId: entityId) { [weak self] result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let entity):
+                        let temperature = entity.attributes.temperature ?? 0
+                        let mode = HvacModes(rawValue: entity.state) ?? .off
+                        self?.roomStates[room] = (temperature, mode)
+                    case .failure(let error):
+                        print("Error fetching state for \(entityId): \(error)")
+                    }
                 }
             }
         }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = HalcyonViewModel.shared
-
-    @State private var selectedTemperature: Double = 22
+    
+//    @State private var selectedTemperature: Double = 22
     @State private var selectedRoom: Room = .chambre
     @State private var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
     @State private var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
     @State private var showingSettings = false // For presenting the settings view
-
+    
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -27,7 +27,7 @@ struct ContentView: View {
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -57,8 +57,6 @@ struct ContentView: View {
                                             HalcyonButtonView(text: viewModel.temperature, outerButtonSize: 100)
                                         }
                                         
-                                        
-                                        
                                         Spacer() // Provides spacing between buttons
                                         
                                         Button(action: {
@@ -72,6 +70,8 @@ struct ContentView: View {
                                     }
                                     .onAppear {
                                         viewModel.fetchSensorStates()
+                                        //                                   viewModel.fetchAndSetInitialState(entityId: "climate.halcyon_chambre")
+                                        viewModel.fetchAndSetInitialStates()
                                     }
                                     .padding(.bottom, 70) // Distance from the bottom
                                 }
@@ -95,19 +95,37 @@ struct ContentView: View {
             })
             .sheet(isPresented: $showingSettings) {
                 OtherView(selectedRoom: $selectedRoom) // Present the settings view as a sheet
-                        .presentationDetents([.fraction(0.6)])
-                }
+                    .presentationDetents([.fraction(0.6)])
+            }
             .applyBackground()
         }
-     }
+    }
+    
+    @ViewBuilder
+    private func roomView(for room: Room) -> some View {
+        if let roomState = viewModel.roomStates[room] {
+            ThermostatView(
+                temperature: .constant(roomState.temperature),
+                mode: .constant(roomState.mode),
+                room: room
+            )
+            .foregroundColor(.white)
+            .onAppear {
+                viewModel.fetchSensorStates()
+            }
+        } else {
+            Text("Loading...")
+        }
+    }
 
+    
     private func bindingFor(room: Room) -> Binding<Double> {
         Binding(
             get: { self.temperaturesForRooms[room, default: 22] },
             set: { self.temperaturesForRooms[room] = $0 }
         )
     }
-
+    
     private func hvacModeBindingFor(room: Room) -> Binding<HvacModes> {
         Binding(
             get: { self.hvacModesForRooms[room, default: .off] },
