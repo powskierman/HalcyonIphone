@@ -8,9 +8,11 @@ class HalcyonViewModel: ObservableObject {
     // Observable properties
     @Published var currentEntityId: String = ""
     @Published var roomStates: [Room: (temperature: Double, mode: HvacModes)] = [:]
+    @Published var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
+    @Published var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
     @Published var temperature: String = "Loading..."
     @Published var humidity: String = "Loading..."
-    @Published var tempSet: Int = 22
+    @Published var tempSet: Int = 32
     @Published var fanSpeed: String = "auto"
     @Published var halcyonMode: HvacModes = .cool
     @Published var minTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 17.0 }
@@ -18,6 +20,13 @@ class HalcyonViewModel: ObservableObject {
     @Published var lowerValue: CGFloat = 0.3
     @Published var upperValue: CGFloat = 0.7
     @Published var isFetchingInitialStates: Bool = false
+    
+    @Published var currentTemperature: Double = 0 {
+        willSet(newTemperature) {
+            print("Updating temperature from \(currentTemperature) to \(newTemperature)")
+        }
+    }
+
 
     let minValue: CGFloat = 12.0
     let maxValue: CGFloat = 30.0
@@ -143,15 +152,39 @@ extension HalcyonViewModel {
             // For now, let's assume 'climate.halcyon_chambre' is the only existing entity
             if entityId == "climate.halcyon_chambre" {
                 dispatchGroup.enter() // Enter only if entity exists
-
+                
                 clientService.fetchEntityState(entityId: entityId) { [weak self] result in
                     DispatchQueue.main.async {
-                        defer { dispatchGroup.leave() } // Leave on completion
+                        defer { dispatchGroup.leave() } // Ensure the group is notified upon completion
                         
                         switch result {
                         case .success(let entity):
-                            let temperature = entity.attributes.temperature ?? 22 // Use a sensible default
-                            let mode = HvacModes(rawValue: entity.state) ?? .off
+                            print("Successfully fetched entity: \(entity)")
+                            
+                            // Debugging: Check what's inside additionalAttributes
+                            print("Debugging - additionalAttributes: \(entity.attributes.additionalAttributes)")
+                            
+                            // Attempt to fetch the temperature
+ //                           if entityId.contains("climate.") {
+//                                var desiredTemperature: Double = entity.attributes.additionalAttributes["temperature"] {
+//                                     print("Successfully extracted desired temperature: \(desiredTemperature)")
+//                                     // Update the UI or internal state with the extracted temperature
+//                                     // For example:
+  //                                   self?.updateThermostatSetting(to: desiredTemperature)
+//                                     let mode = HvacModes(rawValue: entity.state) ?? .off // Default to .off if nil
+//                                     print("Updating \(room): Temp=\(String(describing: desiredTemperature)), Mode=\(mode)") // This will print the correct temperature
+ //                                    self?.roomStates[room] = (temperature, mode)
+//                                } else {
+//                                     print("Failed to extract desired temperature. Using default value.")
+//                                     // Handle the failure case, e.g., by using a default value or showing an error
+//                                 }
+//                             }
+                            
+                            let temperature = entity.attributes.additionalAttributes["temperature"] as? Double ?? 33 // Default to 33 if nil
+                            let mode = HvacModes(rawValue: entity.state) ?? .off // Default to .off if nil
+                            
+                            print("Updating \(room): Temp=\(temperature), Mode=\(mode)") // This will print the correct temperature
+                            
                             self?.roomStates[room] = (temperature, mode)
                         case .failure(let error):
                             print("Error fetching state for \(entityId): \(error)")
@@ -164,6 +197,23 @@ extension HalcyonViewModel {
         dispatchGroup.notify(queue: .main) {
             self.isFetchingInitialStates = false // Indicate loading has finished
             print("Finished fetching all sensor states.")
+        }
+    }
+}
+
+extension HalcyonViewModel {
+    // Call this method after updating roomStates to refresh the UI
+    func refreshUIAfterStateUpdate() {
+        // Notify the UI to refresh by triggering an update on an @Published property
+        // This is just a trigger, you might already have a better property to observe
+        self.objectWillChange.send()
+    }
+}
+
+extension HAAttributes {
+    var temperature: Double? {
+        get {
+            return self.additionalAttributes["temperature"] as? Double
         }
     }
 }

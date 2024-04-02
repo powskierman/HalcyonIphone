@@ -10,8 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = HalcyonViewModel.shared
     @State private var selectedRoom: Room = .chambre
-    @State private var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
-    @State private var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
     @State private var showingSettings = false // For presenting the settings view
     
     init() {
@@ -39,17 +37,31 @@ struct ContentView: View {
                         TabView(selection: $selectedRoom) {
                             ForEach(Room.allCases, id: \.self) { room in
                                 VStack {
-                                    ThermostatView(
-                                        temperature: self.bindingFor(room: room),
-                                        mode: self.hvacModeBindingFor(room: room),
-                                        room: room
-                                    )
-                                    .foregroundColor(.white)
-                                    
-                                    Spacer() // Push everything up
-                                    
-                                    // HStack for buttons with Spacers to evenly distribute them
-                                    HStack {
+                                    if let roomState = viewModel.roomStates[room] {
+                                        ThermostatView(
+                                            temperature: Binding<Double>(
+                                                get: { self.viewModel.roomStates[room]?.temperature ?? 30  },
+                                                set: { newTemp in
+                                                    // Update the temperature in roomStates and trigger UI refresh
+                                                    self.viewModel.roomStates[.chambre]?.temperature = newTemp
+                                                    viewModel.refreshUIAfterStateUpdate()
+                                                }
+                                            ),
+                                            mode: Binding<HvacModes>(
+                                                  get: { roomState.mode },
+                                                  set: { newMode in
+                                                      viewModel.roomStates[room]?.mode = newMode
+                                                      viewModel.refreshUIAfterStateUpdate()
+                                                  }
+                                              ),
+                                            room: room
+                                        )
+                                            .foregroundColor(.white)
+                                        let _ = print("Desired temperature: \(self.tempBindingFor(room: room))")
+                                        Spacer() // Push everything up
+                                        
+                                        // HStack for buttons with Spacers to evenly distribute them
+                                        HStack {
                                         Spacer() // Pushes the buttons to the center
                                         
                                         Button(action: {
@@ -70,12 +82,9 @@ struct ContentView: View {
                                         
                                         Spacer() // Pushes everything to the center
                                     }
-                                    //                                    .onAppear {
-                                    //                                        viewModel.fetchSensorStates()
-                                    //                                        viewModel.fetchAndSetInitialStates()
-                                    //                                    }
-                                    .padding(.bottom, 70) // Distance from the bottom
+                                        .padding(.bottom, 70) // Distance from the bottom
                                 }
+                            }
                                 .tag(room)
                             }
                         }
@@ -103,7 +112,9 @@ struct ContentView: View {
     }
         .onAppear {
             viewModel.fetchSensorStates()
-            viewModel.fetchAndSetInitialStates()
+            if viewModel.roomStates.isEmpty {
+                    viewModel.fetchAndSetInitialStates()
+                }
         }
     }
     
@@ -125,17 +136,24 @@ struct ContentView: View {
     }
 
     
-    private func bindingFor(room: Room) -> Binding<Double> {
+    private func tempBindingFor(room: Room) -> Binding<Double> {
         Binding(
-            get: { self.temperaturesForRooms[room, default: 22] },
-            set: { self.temperaturesForRooms[room] = $0 }
+            get: {
+                let temp = viewModel.temperaturesForRooms[room, default: 31]
+                print("Getting temperature for \(room): \(temp)")
+                return temp
+            },
+            set: {
+                viewModel.temperaturesForRooms[room] = $0
+                print("Setting temperature for \(room) to \($0)")
+            }
         )
     }
     
     private func hvacModeBindingFor(room: Room) -> Binding<HvacModes> {
         Binding(
-            get: { self.hvacModesForRooms[room, default: .off] },
-            set: { self.hvacModesForRooms[room] = $0 }
+            get: { viewModel.hvacModesForRooms[room, default: .off] },
+            set: { viewModel.hvacModesForRooms[room] = $0 }
         )
     }
 }

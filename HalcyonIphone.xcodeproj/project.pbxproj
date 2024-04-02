@@ -11,7 +11,6 @@
 		D030800B2B940E1200545001 /* HassFramework.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03080092B940E1200545001 /* HassFramework.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D030800F2B940E6500545001 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D030800E2B940E6500545001 /* Starscream */; };
 		D03969D62BAE374A00DEDEDF /* Halcyon Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */; };
-		D0633F7B2BB8B968001E949B /* HalcyonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0633F7A2BB8B968001E949B /* HalcyonExtensions.swift */; };
 		D0705A682BA62EB700175B93 /* RangeUISlider in Frameworks */ = {isa = PBXBuildFile; productRef = D0705A672BA62EB700175B93 /* RangeUISlider */; };
 		D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */; };
 		D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0705A882BA7647900175B93 /* BackgroundModifier.swift */; };
@@ -51,7 +50,6 @@
 		D0307FF52B940D4800545001 /* HalcyonIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalcyonIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03080092B940E1200545001 /* HassFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HassFramework.xcframework; path = ../Frameworks/HassFramework/HassFramework.xcframework; sourceTree = "<group>"; };
 		D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halcyon Logo.png"; sourceTree = "<group>"; };
-		D0633F7A2BB8B968001E949B /* HalcyonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonExtensions.swift; sourceTree = "<group>"; };
 		D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonButtonView.swift; sourceTree = "<group>"; };
 		D0705A882BA7647900175B93 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
 		D079846B2BA79FC700D098FA /* HeatPumpRangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatPumpRangeSlider.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			children = (
 				D08453552B953E8900555C64 /* Enums.swift */,
 				D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */,
-				D0633F7A2BB8B968001E949B /* HalcyonExtensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,7 +264,6 @@
 				D08453592B953E8900555C64 /* ThermometerDialView.swift in Sources */,
 				D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */,
 				D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */,
-				D0633F7B2BB8B968001E949B /* HalcyonExtensions.swift in Sources */,
 				D0C9C2E22BA6073400611A92 /* OtherView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
