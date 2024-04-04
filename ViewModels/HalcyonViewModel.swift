@@ -6,17 +6,17 @@ class HalcyonViewModel: ObservableObject {
     static let shared = HalcyonViewModel()
     
     // Observable properties
-    @Published var currentEntityId: String = ""
+ //   @Published var currentEntityId: String = ""
     @Published var roomStates: [Room: (temperature: Double, mode: HvacModes)] = [:]
-    @Published var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
-    @Published var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
+//    @Published var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
+//    @Published var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
     @Published var temperature: String = "Loading..."
     @Published var humidity: String = "Loading..."
-    @Published var tempSet: Int = 32
-    @Published var fanSpeed: String = "auto"
-    @Published var halcyonMode: HvacModes = .cool
-    @Published var minTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 17.0 }
-    @Published var maxTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 23.0 }
+//    @Published var tempSet: Int = 32
+//    @Published var fanSpeed: String = "auto"
+//    @Published var halcyonMode: HvacModes = .cool
+//    @Published var minTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 17.0 }
+//    @Published var maxTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 23.0 }
     @Published var lowerValue: CGFloat = 0.3
     @Published var upperValue: CGFloat = 0.7
     @Published var isFetchingInitialStates: Bool = false
@@ -27,11 +27,12 @@ class HalcyonViewModel: ObservableObject {
         }
     }
 
-
     let minValue: CGFloat = 12.0
     let maxValue: CGFloat = 30.0
     @Published var errorMessage: String?
     
+    var hasFetchedInitialStates = false
+
     private let clientService: HassAPIService
     private var updateTimer: Timer?
     private let debounceInterval: TimeInterval = 0.5
@@ -79,39 +80,33 @@ class HalcyonViewModel: ObservableObject {
                     defer { dispatchGroup.leave() }
                     switch result {
                     case .success(let entity):
-                        if entityId.contains("temperature") {
-                            // Convert the state to Double and format it with one decimal place
-                            if let temperatureValue = Double(entity.state) {
-                                self?.temperature = String(format: "%.1f°", temperatureValue)
-                            } else {
-                                self?.temperature = "Invalid"
-                            }
-                        } else if entityId.contains("humidity") {
-                            // Convert the state to Double and format it with one decimal place
-                            if let humidityValue = Double(entity.state) {
-                                self?.humidity = String(format: "%.1f%%", humidityValue)
-                            } else {
-                                self?.humidity = "Invalid"
-                            }
-                        }
+                        self?.handleSuccess(entity: entity, for: entityId)
                     case .failure(let error):
                         print("Error fetching state for \(entityId): \(error)")
-                        if entityId.contains("temperature") {
-                            self?.temperature = "Error"
-                        } else if entityId.contains("humidity") {
-                            self?.humidity = "Error"
-                        }
+                        self?.handleError(for: entityId)
                     }
                 }
             }
         }
-        
-        dispatchGroup.notify(queue: .main) {
-            print("Finished fetching all sensor states.")
-            // Here, you might update UI or state to indicate loading is complete.
+    }
+
+    private func handleSuccess(entity: HAEntity, for entityId: String) {
+        if entityId.contains("temperature"), let temperatureValue = Double(entity.state) {
+            temperature = String(format: "%.1f°", temperatureValue)
+        } else if entityId.contains("humidity"), let humidityValue = Double(entity.state) {
+            humidity = String(format: "%.1f%%", humidityValue)
         }
     }
-    
+
+    private func handleError(for entityId: String) {
+        // Update UI or notify user appropriately
+        if entityId.contains("temperature") {
+            // Possibly update an error message or log appropriately
+        } else if entityId.contains("humidity") {
+            // Possibly update an error message or log appropriately
+        }
+    }
+
     
     
     // Add other necessary functions from WatchManager if needed
@@ -142,64 +137,47 @@ extension HalcyonViewModel {
 
 extension HalcyonViewModel {
     func fetchAndSetInitialStates() {
-        isFetchingInitialStates = true // Indicate loading has started
+        guard !isFetchingInitialStates else { return }
+        isFetchingInitialStates = true
         let dispatchGroup = DispatchGroup()
-
+        
         Room.allCases.forEach { room in
             let entityId = room.entityId
             
-            // Check if the entityId corresponds to an existing entity
-            // For now, let's assume 'climate.halcyon_chambre' is the only existing entity
-            if entityId == "climate.halcyon_chambre" {
-                dispatchGroup.enter() // Enter only if entity exists
+            dispatchGroup.enter() // Assume every entityId is valid and proceed
+            
+            clientService.fetchEntityState(entityId: entityId) { [weak self] result in
+                defer { dispatchGroup.leave() } // Notify completion in all cases
                 
-                clientService.fetchEntityState(entityId: entityId) { [weak self] result in
-                    DispatchQueue.main.async {
-                        defer { dispatchGroup.leave() } // Ensure the group is notified upon completion
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let haEntity):
+                        let climateModel = ClimateModel(climateEntity: haEntity)
+                        print("Successfully fetched climate data for \(climateModel.friendlyName)")
+
+                        // Now that we're using ClimateModel, extract the needed data
+                        let temperature = climateModel.temperature
+                        let mode = climateModel.hvacMode
                         
-                        switch result {
-                        case .success(let entity):
-                            print("Successfully fetched entity: \(entity)")
-                            
-                            // Debugging: Check what's inside additionalAttributes
-                            print("Debugging - additionalAttributes: \(entity.attributes.additionalAttributes)")
-                            
-                            // Attempt to fetch the temperature
- //                           if entityId.contains("climate.") {
-//                                var desiredTemperature: Double = entity.attributes.additionalAttributes["temperature"] {
-//                                     print("Successfully extracted desired temperature: \(desiredTemperature)")
-//                                     // Update the UI or internal state with the extracted temperature
-//                                     // For example:
-  //                                   self?.updateThermostatSetting(to: desiredTemperature)
-//                                     let mode = HvacModes(rawValue: entity.state) ?? .off // Default to .off if nil
-//                                     print("Updating \(room): Temp=\(String(describing: desiredTemperature)), Mode=\(mode)") // This will print the correct temperature
- //                                    self?.roomStates[room] = (temperature, mode)
-//                                } else {
-//                                     print("Failed to extract desired temperature. Using default value.")
-//                                     // Handle the failure case, e.g., by using a default value or showing an error
-//                                 }
-//                             }
-                            
-                            let temperature = entity.attributes.additionalAttributes["temperature"] as? Double ?? 33 // Default to 33 if nil
-                            let mode = HvacModes(rawValue: entity.state) ?? .off // Default to .off if nil
-                            
-                            print("Updating \(room): Temp=\(temperature), Mode=\(mode)") // This will print the correct temperature
-                            
-                            self?.roomStates[room] = (temperature, mode)
-                        case .failure(let error):
-                            print("Error fetching state for \(entityId): \(error)")
-                        }
+                        print("Updating \(room): Temp=\(temperature), Mode=\(mode)")
+                        self?.roomStates[room] = (temperature, mode)
+                        
+                    case .failure(let error):
+                        print("Error fetching state for \(entityId): \(error)")
                     }
                 }
             }
         }
-
+        
         dispatchGroup.notify(queue: .main) {
             self.isFetchingInitialStates = false // Indicate loading has finished
-            print("Finished fetching all sensor states.")
+            print("Finished fetching initial states for all rooms.")
+            self.refreshUIAfterStateUpdate()
         }
+        hasFetchedInitialStates = true
     }
 }
+
 
 extension HalcyonViewModel {
     // Call this method after updating roomStates to refresh the UI

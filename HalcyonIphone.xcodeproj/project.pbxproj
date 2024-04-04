@@ -29,6 +29,7 @@
 		D08453622B953E8900555C64 /* ThermostatScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08453542B953E8900555C64 /* ThermostatScaleView.swift */; };
 		D08453632B953E8900555C64 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08453552B953E8900555C64 /* Enums.swift */; };
 		D08453642B953E8900555C64 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08453572B953E8900555C64 /* Preview Assets.xcassets */; };
+		D0A0FEAB2BBDD365005EB85E /* ClimateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0FEAA2BBDD365005EB85E /* ClimateModel.swift */; };
 		D0C9C2E22BA6073400611A92 /* OtherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C9C2E12BA6073400611A92 /* OtherView.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		D08453542B953E8900555C64 /* ThermostatScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThermostatScaleView.swift; sourceTree = "<group>"; };
 		D08453552B953E8900555C64 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		D08453572B953E8900555C64 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0A0FEAA2BBDD365005EB85E /* ClimateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateModel.swift; sourceTree = "<group>"; };
 		D0C9C2E12BA6073400611A92 /* OtherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 			children = (
 				D08453552B953E8900555C64 /* Enums.swift */,
 				D08453512B953E8900555C64 /* FujitsuIphoneApp.swift */,
+				D0A0FEAA2BBDD365005EB85E /* ClimateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				D08453632B953E8900555C64 /* Enums.swift in Sources */,
 				D08453592B953E8900555C64 /* ThermometerDialView.swift in Sources */,
 				D0705A872BA74BD700175B93 /* HalcyonButtonView.swift in Sources */,
+				D0A0FEAB2BBDD365005EB85E /* ClimateModel.swift in Sources */,
 				D0705A892BA7647900175B93 /* BackgroundModifier.swift in Sources */,
 				D0C9C2E22BA6073400611A92 /* OtherView.swift in Sources */,
 			);

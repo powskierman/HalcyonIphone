@@ -50,7 +50,7 @@ class HassAPIService: ObservableObject {
     }
     
     // Example method for updating fan mode
-    func updateFanModeForRoom(entityId: String, fanMode: FanMode, completion: @escaping (Result<Void, Error>) -> Void) {
+    func updateFanModeForRoom(entityId: String, fanMode: FanModes, completion: @escaping (Result<Void, Error>) -> Void) {
         print("Updating fan mode for room with fan mode: \(fanMode.rawValue)")
         let commandData: [String: Any] = [
             "entity_id": entityId,

@@ -10,7 +10,9 @@ import SwiftUI
 struct OtherView: View {
     @ObservedObject var viewModel = HalcyonViewModel.shared
     @State private var showingFanPicker = false
-    @State private var selectedFanMode: FanMode = .off
+    @State private var selectedFanMode: FanModes = .off
+    @State private var showingSwingPicker = false
+    @State private var selectedSwingMode: SwingModes = .off
     @Environment(\.presentationMode) var presentationMode
     @Binding var selectedRoom: Room
 
@@ -63,6 +65,9 @@ struct OtherView: View {
             .sheet(isPresented: $showingFanPicker) {
                 fanPickerSheet
             }
+            .sheet(isPresented: $showingSwingPicker) {
+                swingPickerSheet
+            }
             .navigationTitle(selectedRoom.rawValue)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbarContent }
@@ -82,9 +87,12 @@ struct OtherView: View {
     }
 
     private func buttonAction(for setting: Setting) {
-        if setting == .fan {
+        switch setting {
+        case .fan:
             showingFanPicker.toggle()
-        } else {
+        case .swing:
+            showingSwingPicker.toggle()
+        default:
             print("\(setting.rawValue) button tapped")
         }
     }
@@ -93,27 +101,24 @@ struct OtherView: View {
         NavigationView {
             Form {
                 Picker("Fan Mode", selection: $selectedFanMode) {
-                    ForEach(FanMode.allCases, id: \.self) { mode in
+                    ForEach(FanModes.allCases, id: \.self) { mode in
                         Text(mode.rawValue).tag(mode)
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
             }
-//            .navigationTitle("Select Fan Mode")
             .navigationBarItems(trailing: Button("Done") {
                 showingFanPicker = false
-                // Here, it's assumed that `selectedRoom` can directly provide an entity ID suitable for Home Assistant.
-                // You may need to adjust `entityId` based on your actual entity naming convention in Home Assistant.
-                _ = "climate.\(selectedRoom.rawValue.lowercased())" // Modify this line as necessary to match your entity IDs
+                let entityId = "climate.\(selectedRoom.rawValue.lowercased())" // Corrected use of entityId
                 print("Selected fan mode: \(selectedFanMode.rawValue)")
-                HassAPIService.shared.updateFanModeForRoom(entityId: "climate.halcyon_chambre", fanMode: selectedFanMode) { result in
+                // Call update fan mode logic here
+                HassAPIService.shared.updateFanModeForRoom(entityId: entityId, fanMode: selectedFanMode) { result in
                     switch result {
                     case .success():
                         print("Fan mode successfully updated to \(selectedFanMode.rawValue)")
                     case .failure(let error):
                         print("Failed to update fan mode: \(error)")
                     }
-                
                 }
             })
             .toolbar {
@@ -124,6 +129,29 @@ struct OtherView: View {
         }
     }
 
+    private var swingPickerSheet: some View {
+        NavigationView {
+            Form {
+                Picker("Swing Mode", selection: $selectedSwingMode) {
+                    ForEach(SwingModes.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(WheelPickerStyle())
+            }
+            .navigationBarItems(trailing: Button("Done") {
+                showingSwingPicker = false
+                let entityId = "climate.\(selectedRoom.rawValue.lowercased())"
+                print("Selected swing mode: \(selectedSwingMode.rawValue)")
+                // Call update swing mode logic here similar to fan mode update logic
+            })
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Swing Mode").font(.headline)
+                }
+            }
+        }
+    }
 
 
     private var toolbarContent: some ToolbarContent {

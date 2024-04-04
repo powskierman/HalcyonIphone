@@ -70,6 +70,7 @@ struct ThermostatView: View {
                     mode: $mode
                 )
                 .onChange(of: temperature) { newTemperature in
+                    print("Temperature updated to: \(newTemperature)")
                     postTemperatureUpdate(newTemperature: newTemperature)
                 }
             }

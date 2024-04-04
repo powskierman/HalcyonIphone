@@ -10,15 +10,14 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = HalcyonViewModel.shared
     @State private var selectedRoom: Room = .chambre
-    @State private var showingSettings = false // For presenting the settings view
+    @State private var showingSettings = false
     
     init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .clear // Set the background color to clear for a transparent navigation bar
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.preferredFont(forTextStyle: .title1)] // Set title color to white and font to title size
+        appearance.backgroundColor = .clear
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.preferredFont(forTextStyle: .title1)]
         
-        // Apply the appearance to all navigation bar appearances
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
@@ -27,64 +26,44 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             if viewModel.isFetchingInitialStates {
-                // Display a loading indicator of your choice here
                 Text("Fetching room states...")
             } else {
-            GeometryReader { geometry in
-                ZStack {
+                GeometryReader { geometry in
                     VStack(spacing: 0) {
-                        // Use TabView with a selection binding to the selectedRoom
                         TabView(selection: $selectedRoom) {
                             ForEach(Room.allCases, id: \.self) { room in
                                 VStack {
                                     if let roomState = viewModel.roomStates[room] {
                                         ThermostatView(
-                                            temperature: Binding<Double>(
-                                                get: { self.viewModel.roomStates[room]?.temperature ?? 30  },
-                                                set: { newTemp in
-                                                    // Update the temperature in roomStates and trigger UI refresh
-                                                    self.viewModel.roomStates[.chambre]?.temperature = newTemp
-                                                    viewModel.refreshUIAfterStateUpdate()
-                                                }
-                                            ),
-                                            mode: Binding<HvacModes>(
-                                                  get: { roomState.mode },
-                                                  set: { newMode in
-                                                      viewModel.roomStates[room]?.mode = newMode
-                                                      viewModel.refreshUIAfterStateUpdate()
-                                                  }
-                                              ),
+                                            temperature: tempBindingFor(room: room),
+                                            mode: hvacModeBindingFor(room: room),
                                             room: room
                                         )
-                                            .foregroundColor(.white)
-                                        let _ = print("Desired temperature: \(self.tempBindingFor(room: room))")
-                                        Spacer() // Push everything up
+                                        .foregroundColor(.white)
+                                        Spacer()
                                         
-                                        // HStack for buttons with Spacers to evenly distribute them
                                         HStack {
-                                        Spacer() // Pushes the buttons to the center
-                                        
-                                        Button(action: {
-                                            // Action for the Temp button
-                                            print("Temp button tapped")
-                                        }) {
-                                            HalcyonButtonView(text: viewModel.temperature, outerButtonSize: 100)
+                                            Spacer()
+                                            
+                                            Button(action: {
+                                                print("Temp button tapped")
+                                            }) {
+                                                HalcyonButtonView(text: viewModel.temperature, outerButtonSize: 100)
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            Button(action: {
+  //                                              viewModel.fetchSensorStates()
+                                            }) {
+                                                HalcyonButtonView(text: viewModel.humidity, outerButtonSize: 100)
+                                            }
+                                            
+                                            Spacer()
                                         }
-                                        
-                                        Spacer() // Provides spacing between buttons
-                                        
-                                        Button(action: {
-                                            // Action for the Humidity button
-                                            viewModel.fetchSensorStates()
-                                        }) {
-                                            HalcyonButtonView(text: viewModel.humidity, outerButtonSize: 100)
-                                        }
-                                        
-                                        Spacer() // Pushes everything to the center
+                                        .padding(.bottom, 70)
                                     }
-                                        .padding(.bottom, 70) // Distance from the bottom
                                 }
-                            }
                                 .tag(room)
                             }
                         }
@@ -92,68 +71,53 @@ struct ContentView: View {
                         .frame(width: geometry.size.width)
                     }
                 }
-            }
-            .navigationTitle(selectedRoom.rawValue) // Use the rawValue for the navigation title
-            .navigationBarTitleDisplayMode(.inline)
-            // Add a gear icon as a navigation bar item
-            .navigationBarItems(trailing: Button(action: {
-                showingSettings = true // Trigger the sheet to show the SettingsView
-            }) {
-                Image(systemName: "gear")
-                    .foregroundColor(.white)
-                    .font(.title) // Adjust the size of the gear icon if needed
-            })
-            .sheet(isPresented: $showingSettings) {
-                OtherView(selectedRoom: $selectedRoom) // Present the settings view as a sheet
-                    .presentationDetents([.fraction(0.6)])
-            }
-            .applyBackground()
-        }
-    }
-        .onAppear {
-            viewModel.fetchSensorStates()
-            if viewModel.roomStates.isEmpty {
-                    viewModel.fetchAndSetInitialStates()
+                
+                .navigationTitle(selectedRoom.rawValue)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing: Button(action: {
+                    showingSettings = true
+                }) {
+                    Image(systemName: "gear")
+                        .foregroundColor(.white)
+                        .font(.title)
+                })
+                .sheet(isPresented: $showingSettings) {
+                    OtherView(selectedRoom: $selectedRoom)
+                        .presentationDetents([.fraction(0.6)])
                 }
-        }
-    }
-    
-    @ViewBuilder
-    private func roomView(for room: Room) -> some View {
-        if let roomState = viewModel.roomStates[room] {
-            ThermostatView(
-                temperature: .constant(roomState.temperature),
-                mode: .constant(roomState.mode),
-                room: room
-            )
-            .foregroundColor(.white)
-            .onAppear {
-                viewModel.fetchSensorStates()
+                .applyBackground()
+                
+                .onAppear {
+                    if !viewModel.hasFetchedInitialStates {
+                        viewModel.fetchAndSetInitialStates()
+                    }
+                    viewModel.fetchSensorStates()
+                }
             }
-        } else {
-            Text("Loading...")
         }
     }
-
     
     private func tempBindingFor(room: Room) -> Binding<Double> {
         Binding(
             get: {
-                let temp = viewModel.temperaturesForRooms[room, default: 31]
-                print("Getting temperature for \(room): \(temp)")
-                return temp
+                viewModel.roomStates[room]?.temperature ?? 30
             },
             set: {
-                viewModel.temperaturesForRooms[room] = $0
-                print("Setting temperature for \(room) to \($0)")
+                viewModel.roomStates[room]?.temperature = $0
+                viewModel.refreshUIAfterStateUpdate()
             }
         )
     }
     
     private func hvacModeBindingFor(room: Room) -> Binding<HvacModes> {
         Binding(
-            get: { viewModel.hvacModesForRooms[room, default: .off] },
-            set: { viewModel.hvacModesForRooms[room] = $0 }
+            get: {
+                viewModel.roomStates[room]?.mode ?? .off
+            },
+            set: {
+                viewModel.roomStates[room]?.mode = $0
+                viewModel.refreshUIAfterStateUpdate()
+            }
         )
     }
 }
