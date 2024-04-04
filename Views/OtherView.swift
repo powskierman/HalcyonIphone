@@ -109,7 +109,8 @@ struct OtherView: View {
             }
             .navigationBarItems(trailing: Button("Done") {
                 showingFanPicker = false
-                let entityId = "climate.\(selectedRoom.rawValue.lowercased())" // Corrected use of entityId
+                let entityId = "climate.halcyon_\(selectedRoom.rawValue.lowercased())" // Corrected use of entityId
+                print("Selected room: \(entityId)")
                 print("Selected fan mode: \(selectedFanMode.rawValue)")
                 // Call update fan mode logic here
                 HassAPIService.shared.updateFanModeForRoom(entityId: entityId, fanMode: selectedFanMode) { result in
