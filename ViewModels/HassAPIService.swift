@@ -62,6 +62,18 @@ class HassAPIService: ObservableObject {
         sendCommand(entityId: entityId, service: "climate.set_fan_mode", data: commandData, completion: completion)
     }
     
+    func updateSwingModeForRoom(entityId: String, swingMode: SwingModes, completion: @escaping (Result<Void, Error>) -> Void) {
+        print("Updating swing mode for room with swing mode: \(swingMode.rawValue)")
+        let commandData: [String: Any] = [
+            "entity_id": entityId,
+            "swing_mode": swingMode.rawValue
+        ]
+
+        print("Updating swing mode with data: \(commandData)")
+
+        sendCommand(entityId: entityId, service: "climate.set_swing_mode", data: commandData, completion: completion)
+    }
+    
     // Additional functionalities leveraging HassRestClient
     func fetchDeviceState(deviceId: String, completion: @escaping (Result<HassRestClient.DeviceState, Error>) -> Void) {
         restClient.fetchDeviceState(deviceId: deviceId, completion: completion)

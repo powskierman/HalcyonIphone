@@ -110,7 +110,7 @@ struct OtherView: View {
             .navigationBarItems(trailing: Button("Done") {
                 showingFanPicker = false
                 let entityId = "climate.halcyon_\(selectedRoom.rawValue.lowercased())" // Corrected use of entityId
-                print("Selected room: \(entityId)")
+ //               print("Selected room: \(entityId)")
                 print("Selected fan mode: \(selectedFanMode.rawValue)")
                 // Call update fan mode logic here
                 HassAPIService.shared.updateFanModeForRoom(entityId: entityId, fanMode: selectedFanMode) { result in
@@ -142,9 +142,17 @@ struct OtherView: View {
             }
             .navigationBarItems(trailing: Button("Done") {
                 showingSwingPicker = false
-                let entityId = "climate.\(selectedRoom.rawValue.lowercased())"
+                let entityId = "climate.halcyon_\(selectedRoom.rawValue.lowercased())"
+                print("Selected room: \(entityId)")
                 print("Selected swing mode: \(selectedSwingMode.rawValue)")
-                // Call update swing mode logic here similar to fan mode update logic
+                HassAPIService.shared.updateSwingModeForRoom(entityId: entityId, swingMode: selectedSwingMode) { result in
+                    switch result {
+                    case .success():
+                        print("Swing mode successfully updated to \(selectedSwingMode.rawValue)")
+                    case .failure(let error):
+                        print("Failed to update swing mode: \(error)")
+                    }
+                }
             })
             .toolbar {
                 ToolbarItem(placement: .principal) {
