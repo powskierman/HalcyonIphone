@@ -33,7 +33,8 @@ struct ContentView: View {
                         TabView(selection: $selectedRoom) {
                             ForEach(Room.allCases, id: \.self) { room in
                                 VStack {
-                                    if let roomState = viewModel.roomStates[room] {
+                                    let _ = print("room: \(room) roomStates: \(String(describing: viewModel.roomStates[room]))")
+                                    if viewModel.roomStates[room] != nil {
                                         ThermostatView(
                                             temperature: tempBindingFor(room: room),
                                             mode: hvacModeBindingFor(room: room),

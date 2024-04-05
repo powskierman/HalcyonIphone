@@ -89,11 +89,11 @@
 		D0307FEC2B940D4800545001 = {
 			isa = PBXGroup;
 			children = (
+				D08453522B953E8900555C64 /* Secrets.plist */,
 				D03969D42BAE372600DEDEDF /* Documents */,
 				D0C9C2E32BA6078800611A92 /* Views */,
 				D0C9C2E42BA607A800611A92 /* Models */,
 				D0C9C2E52BA607CC00611A92 /* ViewModels */,
-				D08453522B953E8900555C64 /* Secrets.plist */,
 				D084534E2B953E8900555C64 /* Assets.xcassets */,
 				D08453562B953E8900555C64 /* Preview Content */,
 				D084534D2B953E8900555C64 /* thermostat.svg */,

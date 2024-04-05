@@ -6,17 +6,9 @@ class HalcyonViewModel: ObservableObject {
     static let shared = HalcyonViewModel()
     
     // Observable properties
- //   @Published var currentEntityId: String = ""
     @Published var roomStates: [Room: (temperature: Double, mode: HvacModes)] = [:]
-//    @Published var temperaturesForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 22 }
-//    @Published var hvacModesForRooms: [Room: HvacModes] = Room.allCases.reduce(into: [:]) { $0[$1] = .off }
     @Published var temperature: String = "Loading..."
     @Published var humidity: String = "Loading..."
-//    @Published var tempSet: Int = 32
-//    @Published var fanSpeed: String = "auto"
-//    @Published var halcyonMode: HvacModes = .cool
-//    @Published var minTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 17.0 }
-//    @Published var maxTemperatureForRooms: [Room: Double] = Room.allCases.reduce(into: [:]) { $0[$1] = 23.0 }
     @Published var lowerValue: CGFloat = 0.3
     @Published var upperValue: CGFloat = 0.7
     @Published var isFetchingInitialStates: Bool = false
@@ -34,6 +26,8 @@ class HalcyonViewModel: ObservableObject {
     var hasFetchedInitialStates = false
 
     private let clientService: HassAPIService
+    
+    // Timer for debouncing temperature updates
     private var updateTimer: Timer?
     private let debounceInterval: TimeInterval = 0.5
     
