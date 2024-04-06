@@ -51,6 +51,8 @@
 		D0307FF52B940D4800545001 /* HalcyonIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalcyonIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03080092B940E1200545001 /* HassFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = HassFramework.xcframework; path = ../Frameworks/HassFramework/HassFramework.xcframework; sourceTree = "<group>"; };
 		D03969D52BAE374A00DEDEDF /* Halcyon Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halcyon Logo.png"; sourceTree = "<group>"; };
+		D061B5EB2BC092D80005A68D /* HalcyonIphone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = HalcyonIphone.entitlements; path = HalcyonIphone/HalcyonIphone.entitlements; sourceTree = "<group>"; };
+		D061B5EC2BC092F40005A68D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HalcyonIphone/Info.plist; sourceTree = "<group>"; };
 		D0705A862BA74BD700175B93 /* HalcyonButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalcyonButtonView.swift; sourceTree = "<group>"; };
 		D0705A882BA7647900175B93 /* BackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModifier.swift; sourceTree = "<group>"; };
 		D079846B2BA79FC700D098FA /* HeatPumpRangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatPumpRangeSlider.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		D0307FEC2B940D4800545001 = {
 			isa = PBXGroup;
 			children = (
+				D061B5EC2BC092F40005A68D /* Info.plist */,
+				D061B5EB2BC092D80005A68D /* HalcyonIphone.entitlements */,
 				D08453522B953E8900555C64 /* Secrets.plist */,
 				D03969D42BAE372600DEDEDF /* Documents */,
 				D0C9C2E32BA6078800611A92 /* Views */,
@@ -400,12 +404,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = HalcyonIphone/HalcyonIphone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HalcyonIphone/Preview Content\"";
-				DEVELOPMENT_TEAM = G3337N7QRS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = G3337N7QRS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HalcyonIphone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -415,8 +424,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.powskierman.FujitsuIphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.powskierman.HalcyonIphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Halcyon Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -430,12 +441,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = HalcyonIphone/HalcyonIphone.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HalcyonIphone/Preview Content\"";
-				DEVELOPMENT_TEAM = G3337N7QRS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = G3337N7QRS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HalcyonIphone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,8 +461,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.powskierman.FujitsuIphone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.powskierman.HalcyonIphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Halcyon Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,0 +1,24 @@
+{
+  "originHash" : "4849687a5bead7868eee1a36163b8c48f5c721cceec013a70aa8c7b66fdb4eec",
+  "pins" : [
+    {
+      "identity" : "rangeuislider",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/chicio/RangeUISlider.git",
+      "state" : {
+        "revision" : "b1e8242eb7ab07051721a2d7b937cd75ca129ebf",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream.git",
+      "state" : {
+        "revision" : "ac6c0fc9da221873e01bd1a0d4818498a71eef33",
+        "version" : "4.0.6"
+      }
+    }
+  ],
+  "version" : 3
+}

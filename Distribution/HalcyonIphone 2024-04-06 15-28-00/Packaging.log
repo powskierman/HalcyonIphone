@@ -1,0 +1,199 @@
+2024-04-06 21:27:53 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x328db9ab0; archive(resolved)="<IDEArchive: 0x600011fec7e0>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	Chain (16, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x328db9ab0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x328dbd250; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x329afe700; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x3289eb690; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x3289ec130; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x3289eb460; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x3289eacc0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x3289ec470; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x32eb2c320; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600002a99040; teamID='G3337N7QRS', teamName='Michel Lapointe', teamType='Individual', username='mlapoint99@hotmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x32eb2c0f0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="(null)">
+	<IDEDistributionContext: 0x32eb2bec0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="(null)">
+	<IDEDistributionContext: 0x328dcbbe0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="(null)">
+	<IDEDistributionContext: 0x325923f50; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="<IDEDistributionMethodiOSAdHoc: 0x6000077955c0>", team="(null)">
+	<IDEDistributionContext: 0x10e511260; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x1356201b0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="(null)", team="(null)">
+	<IDEDistributionContext: 0x13564bcf0; archive = "<IDEArchive: 0x600011fec7e0>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x328db9ab0>
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCopyItemStep
+2024-04-06 21:27:53 +0000  Running /usr/bin/ditto '-V' '/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app'
+2024-04-06 21:27:53 +0000  >>> Copying /Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app 
+2024-04-06 21:27:53 +0000  copying file ./_CodeSignature/CodeResources ... 
+2024-04-06 21:27:53 +0000  4847 bytes for ./_CodeSignature/CodeResources
+2024-04-06 21:27:53 +0000  copying file ./Secrets.plist ... 
+2024-04-06 21:27:53 +0000  337 bytes for ./Secrets.plist
+2024-04-06 21:27:53 +0000  copying file ./AppIcon60x60@2x.png ... 
+2024-04-06 21:27:53 +0000  9051 bytes for ./AppIcon60x60@2x.png
+2024-04-06 21:27:53 +0000  copying file ./Halcyon Logo.png ... 
+2024-04-06 21:27:53 +0000  13537 bytes for ./Halcyon Logo.png
+2024-04-06 21:27:53 +0000  copying file ./Assets.car ... 
+2024-04-06 21:27:53 +0000  169775 bytes for ./Assets.car
+2024-04-06 21:27:53 +0000  copying file ./AppIcon76x76@2x~ipad.png ... 
+2024-04-06 21:27:53 +0000  12312 bytes for ./AppIcon76x76@2x~ipad.png
+2024-04-06 21:27:53 +0000  copying file ./Frameworks/HassFramework.framework/_CodeSignature/CodeResources ... 
+2024-04-06 21:27:53 +0000  2224 bytes for ./Frameworks/HassFramework.framework/_CodeSignature/CodeResources
+2024-04-06 21:27:53 +0000  copying file ./Frameworks/HassFramework.framework/Secrets.plist ... 
+2024-04-06 21:27:53 +0000  338 bytes for ./Frameworks/HassFramework.framework/Secrets.plist
+2024-04-06 21:27:53 +0000  copying file ./Frameworks/HassFramework.framework/HassFramework ... 
+2024-04-06 21:27:53 +0000  35104 bytes for ./Frameworks/HassFramework.framework/HassFramework
+2024-04-06 21:27:53 +0000  copying file ./Frameworks/HassFramework.framework/.gitignore ... 
+2024-04-06 21:27:53 +0000  196 bytes for ./Frameworks/HassFramework.framework/.gitignore
+2024-04-06 21:27:53 +0000  copying file ./Frameworks/HassFramework.framework/Info.plist ... 
+2024-04-06 21:27:53 +0000  767 bytes for ./Frameworks/HassFramework.framework/Info.plist
+2024-04-06 21:27:53 +0000  copying file ./embedded.mobileprovision ... 
+2024-04-06 21:27:53 +0000  12820 bytes for ./embedded.mobileprovision
+2024-04-06 21:27:53 +0000  copying file ./HalcyonIphone ... 
+2024-04-06 21:27:53 +0000  1025296 bytes for ./HalcyonIphone
+2024-04-06 21:27:53 +0000  copying file ./Info.plist ... 
+2024-04-06 21:27:53 +0000  1335 bytes for ./Info.plist
+2024-04-06 21:27:53 +0000  copying file ./PkgInfo ... 
+2024-04-06 21:27:53 +0000  8 bytes for ./PkgInfo
+2024-04-06 21:27:53 +0000  copying file ./thermostat.svg ... 
+2024-04-06 21:27:53 +0000  28238 bytes for ./thermostat.svg
+2024-04-06 21:27:53 +0000  /usr/bin/ditto exited with 0
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-04-06 21:27:53 +0000  Skipping profile for item: <IDEDistributionItem: 0x600011f24060; bundleID='com.powskierman.HassFramework', path='<DVTFilePath:0x600005ab6980:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404000; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a7d80; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='(null)', teamID='G3337N7QRS', identifier='com.powskierman.HassFramework', executablePath='<DVTFilePath:0x600005ab4d00:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework'>', hardenedRuntime='0'>'>
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionSymbolsStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionAppThinningStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionArchThinningStep
+2024-04-06 21:27:53 +0000  Item /Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2024-04-06 21:27:53 +0000  Archs to thin for item /Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework are ["arm64e"]
+2024-04-06 21:27:53 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework' '-verify_arch' 'arm64e'
+2024-04-06 21:27:53 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-04-06 21:27:53 +0000  Skipping architecture thinning for item "HassFramework" because arch "arm64e" wasn't found
+2024-04-06 21:27:53 +0000  Item /Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app doesn't have the entitlement com.apple.developer.web-browser-engine.host enabled, returning ["arm64e"]
+2024-04-06 21:27:53 +0000  Archs to thin for item /Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app are ["arm64e"]
+2024-04-06 21:27:53 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/HalcyonIphone' '-verify_arch' 'arm64e'
+2024-04-06 21:27:53 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-04-06 21:27:53 +0000  Skipping architecture thinning for item "HalcyonIphone" because arch "arm64e" wasn't found
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionODRStep
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-04-06 21:27:53 +0000  Skipping stripping extended attributes because the codesign step will strip them.
+2024-04-06 21:27:53 +0000  Skipping stripping extended attributes because the codesign step will strip them.
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCodesignStep
+2024-04-06 21:27:53 +0000  Entitlements for <IDEDistributionItem: 0x600011f24060; bundleID='com.powskierman.HassFramework', path='<DVTFilePath:0x600005ab6980:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404000; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a7d80; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='(null)', teamID='G3337N7QRS', identifier='com.powskierman.HassFramework', executablePath='<DVTFilePath:0x600005ab4d00:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework'>', hardenedRuntime='0'>'>: {
+}
+2024-04-06 21:27:53 +0000  Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2024-04-06 21:27:53 +0000  Entitlements for <IDEDistributionItem: 0x600011f24060; bundleID='com.powskierman.HassFramework', path='<DVTFilePath:0x600005ab6980:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404000; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a7540; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='(null)', teamID='G3337N7QRS', identifier='com.powskierman.HassFramework', executablePath='<DVTFilePath:0x600005ab4d00:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework'>', hardenedRuntime='0'>'> are: {
+}
+2024-04-06 21:27:53 +0000  Writing entitlements for <IDEDistributionItem: 0x600011f24060; bundleID='com.powskierman.HassFramework', path='<DVTFilePath:0x600005ab6980:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404000; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a55c0; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='(null)', teamID='G3337N7QRS', identifier='com.powskierman.HassFramework', executablePath='<DVTFilePath:0x600005ab4d00:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework'>', hardenedRuntime='0'>'> to: /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/entitlements~~~UiTYR4
+2024-04-06 21:27:53 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '8C571C0EE592F9EF3436485890B605478C8857A0' '--entitlements' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/entitlements~~~UiTYR4' '--generate-entitlement-der' '--strip-disallowed-xattrs' '--preserve-metadata=identifier,flags,runtime' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/Frameworks/HassFramework.framework'
+2024-04-06 21:27:53 +0000  /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/Frameworks/HassFramework.framework: replacing existing signature
+2024-04-06 21:27:53 +0000  /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/Frameworks/HassFramework.framework: signed bundle with Mach-O thin (arm64) [com.powskierman.HassFramework]
+2024-04-06 21:27:53 +0000  /usr/bin/codesign exited with 0
+2024-04-06 21:27:53 +0000  Entitlements for <IDEDistributionItem: 0x600011f265e0; bundleID='com.powskierman.HalcyonIphone', path='<DVTFilePath:0x600005ab5180:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404050; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a7d80; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='{
+    "application-identifier" = "G3337N7QRS.com.powskierman.HalcyonIphone";
+    "aps-environment" = production;
+    "com.apple.developer.team-identifier" = G3337N7QRS;
+    "get-task-allow" = 0;
+}', teamID='G3337N7QRS', identifier='com.powskierman.HalcyonIphone', executablePath='<DVTFilePath:0x600005ab7b80:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/HalcyonIphone'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "G3337N7QRS.com.powskierman.HalcyonIphone";
+    "aps-environment" = production;
+    "com.apple.developer.team-identifier" = G3337N7QRS;
+    "get-task-allow" = 0;
+}
+2024-04-06 21:27:53 +0000  Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2024-04-06 21:27:53 +0000  Entitlements for <IDEDistributionItem: 0x600011f265e0; bundleID='com.powskierman.HalcyonIphone', path='<DVTFilePath:0x600005ab5180:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404050; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a7540; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='{
+    "application-identifier" = "G3337N7QRS.com.powskierman.HalcyonIphone";
+    "aps-environment" = production;
+    "com.apple.developer.team-identifier" = G3337N7QRS;
+    "get-task-allow" = 0;
+}', teamID='G3337N7QRS', identifier='com.powskierman.HalcyonIphone', executablePath='<DVTFilePath:0x600005ab7b80:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/HalcyonIphone'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "G3337N7QRS.com.powskierman.HalcyonIphone";
+    "aps-environment" = production;
+    "com.apple.developer.team-identifier" = G3337N7QRS;
+    "get-task-allow" = 0;
+}
+2024-04-06 21:27:53 +0000  Writing entitlements for <IDEDistributionItem: 0x600011f265e0; bundleID='com.powskierman.HalcyonIphone', path='<DVTFilePath:0x600005ab5180:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60001d404050; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x6000040a55c0; name='Apple Distribution: Michel Lapointe (G3337N7QRS)', hash='8C571C0EE592F9EF3436485890B605478C8857A0', serialNumber='407906866FC7D36E5C7ED5D32394FF99', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2024-04-05 20:21:52 +0000''>', entitlements='{
+    "application-identifier" = "G3337N7QRS.com.powskierman.HalcyonIphone";
+    "aps-environment" = production;
+    "com.apple.developer.team-identifier" = G3337N7QRS;
+    "get-task-allow" = 0;
+}', teamID='G3337N7QRS', identifier='com.powskierman.HalcyonIphone', executablePath='<DVTFilePath:0x600005ab7b80:'/Users/michel/Library/Developer/Xcode/Archives/2024-04-06/HalcyonIphone 2024-04-06, 3.23 PM.xcarchive/Products/Applications/HalcyonIphone.app/HalcyonIphone'>', hardenedRuntime='0'>'> to: /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/entitlements~~~UhTdRO
+2024-04-06 21:27:53 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '8C571C0EE592F9EF3436485890B605478C8857A0' '--entitlements' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/entitlements~~~UhTdRO' '--generate-entitlement-der' '--strip-disallowed-xattrs' '--preserve-metadata=identifier,flags,runtime' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app'
+2024-04-06 21:27:53 +0000  /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app: replacing existing signature
+2024-04-06 21:27:53 +0000  /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app: signed app bundle with Mach-O thin (arm64) [com.powskierman.HalcyonIphone]
+2024-04-06 21:27:53 +0000  /usr/bin/codesign exited with 0
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCreateIPAStep
+2024-04-06 21:27:53 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root' '/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Packages/HalcyonIphone.ipa'
+2024-04-06 21:27:53 +0000  >>> Copying /var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root 
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/_CodeSignature/CodeResources ... 
+2024-04-06 21:27:53 +0000  4847 bytes for ./Payload/HalcyonIphone.app/_CodeSignature/CodeResources
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Secrets.plist ... 
+2024-04-06 21:27:53 +0000  337 bytes for ./Payload/HalcyonIphone.app/Secrets.plist
+copying file ./Payload/HalcyonIphone.app/AppIcon60x60@2x.png ... 
+2024-04-06 21:27:53 +0000  9051 bytes for ./Payload/HalcyonIphone.app/AppIcon60x60@2x.png
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Halcyon Logo.png ... 
+2024-04-06 21:27:53 +0000  13537 bytes for ./Payload/HalcyonIphone.app/Halcyon Logo.png
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Assets.car ... 
+2024-04-06 21:27:53 +0000  169775 bytes for ./Payload/HalcyonIphone.app/Assets.car
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/AppIcon76x76@2x~ipad.png ... 
+2024-04-06 21:27:53 +0000  12312 bytes for ./Payload/HalcyonIphone.app/AppIcon76x76@2x~ipad.png
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/_CodeSignature/CodeResources ... 
+2024-04-06 21:27:53 +0000  2224 bytes for ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/_CodeSignature/CodeResources
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/Secrets.plist ... 
+2024-04-06 21:27:53 +0000  338 bytes for ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/Secrets.plist
+copying file ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework ... 
+2024-04-06 21:27:53 +0000  35360 bytes for ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/HassFramework
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/.gitignore ... 
+2024-04-06 21:27:53 +0000  196 bytes for ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/.gitignore
+copying file ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/Info.plist ... 
+2024-04-06 21:27:53 +0000  767 bytes for ./Payload/HalcyonIphone.app/Frameworks/HassFramework.framework/Info.plist
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/embedded.mobileprovision ... 
+2024-04-06 21:27:53 +0000  15175 bytes for ./Payload/HalcyonIphone.app/embedded.mobileprovision
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/HalcyonIphone ... 
+2024-04-06 21:27:53 +0000  1025296 bytes for ./Payload/HalcyonIphone.app/HalcyonIphone
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/Info.plist ... 
+2024-04-06 21:27:53 +0000  1335 bytes for ./Payload/HalcyonIphone.app/Info.plist
+2024-04-06 21:27:53 +0000  copying file ./Payload/HalcyonIphone.app/PkgInfo ... 
+2024-04-06 21:27:53 +0000  8 bytes for ./Payload/HalcyonIphone.app/PkgInfo
+copying file ./Payload/HalcyonIphone.app/thermostat.svg ... 
+2024-04-06 21:27:53 +0000  28238 bytes for ./Payload/HalcyonIphone.app/thermostat.svg
+2024-04-06 21:27:53 +0000  /usr/bin/ditto exited with 0
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-04-06 21:27:53 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-04-06 21:27:53 +0000  IDEDistributionItem init <DVTFilePath:0x600005a5dd00:'/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app/Frameworks/HassFramework.framework'>
+2024-04-06 21:27:53 +0000  IDEDistributionItem init <DVTFilePath:0x600005a63880:'/var/folders/tr/37bkknrx6lz6mx2d3x0mm_100000gn/T/XcodeDistPipeline.~~~SdSJXJ/Root/Payload/HalcyonIphone.app'>
+2024-04-06 21:27:53 +0000  Processing step: IDEDistributionCreateManifestStep
