@@ -46,18 +46,26 @@ struct ContentView: View {
                                         HStack {
                                             Spacer()
                                             
-                                            Button(action: {
-                                                print("Temp button tapped")
-                                            }) {
-                                                HalcyonButtonView(text: viewModel.temperature, outerButtonSize: 100)
+                                            VStack {
+                                                Text("Outdoor")
+                                                    .foregroundColor(.white) // Adjust color as needed
+                                                Button(action: {
+                                                    print("Temp button tapped")
+                                                }) {
+                                                    HalcyonButtonView(text: viewModel.outdoorTemperature, outerButtonSize: 100)
+                                                }
                                             }
                                             
                                             Spacer()
                                             
-                                            Button(action: {
-  //                                              viewModel.fetchSensorStates()
-                                            }) {
-                                                HalcyonButtonView(text: viewModel.humidity, outerButtonSize: 100)
+                                            VStack {
+                                                Text("Indoor")
+                                                    .foregroundColor(.white) // Adjust color as needed
+                                                Button(action: {
+                                          //          viewModel.fetchSensorStates()
+                                                }) {
+                                                    HalcyonButtonView(text: viewModel.indoorTemperature, outerButtonSize: 100)
+                                                }
                                             }
                                             
                                             Spacer()

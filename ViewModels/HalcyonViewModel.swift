@@ -7,8 +7,8 @@ class HalcyonViewModel: ObservableObject {
     
     // Observable properties
     @Published var roomStates: [Room: (temperature: Double, mode: HvacModes)] = [:]
-    @Published var temperature: String = "Loading..."
-    @Published var humidity: String = "Loading..."
+    @Published var outdoorTemperature: String = "Loading..."
+    @Published var indoorTemperature: String = "Loading..."
     @Published var lowerValue: CGFloat = 0.3
     @Published var upperValue: CGFloat = 0.7
     @Published var isFetchingInitialStates: Bool = false
@@ -64,7 +64,7 @@ class HalcyonViewModel: ObservableObject {
     }
     
     func fetchSensorStates() {
-        let sensorIds = ["sensor.nhtemp_temperature", "sensor.nhtemp_humidity"]
+        let sensorIds = ["sensor.nhmeteo_temperature", "sensor.indoor_temp_temperature"]
         let dispatchGroup = DispatchGroup()
 
         sensorIds.forEach { entityId in
@@ -85,18 +85,19 @@ class HalcyonViewModel: ObservableObject {
     }
 
     private func handleSuccess(entity: HAEntity, for entityId: String) {
-        if entityId.contains("temperature"), let temperatureValue = Double(entity.state) {
-            temperature = String(format: "%.1f°", temperatureValue)
-        } else if entityId.contains("humidity"), let humidityValue = Double(entity.state) {
-            humidity = String(format: "%.1f%%", humidityValue)
+        if entityId.contains("nhmeteo"), let temperatureValue = Double(entity.state) {
+            outdoorTemperature = String(format: "%.1f°", temperatureValue)
+        } else if entityId.contains("indoor"), let humidityValue = Double(entity.state) {
+            indoorTemperature = String(format: "%.1f°", humidityValue)
         }
+        print("Entity state for \(entityId): \(entity.state)")
     }
 
     private func handleError(for entityId: String) {
         // Update UI or notify user appropriately
-        if entityId.contains("temperature") {
+        if entityId.contains("indoor_temperature") {
             // Possibly update an error message or log appropriately
-        } else if entityId.contains("humidity") {
+        } else if entityId.contains("outdoor_temperature") {
             // Possibly update an error message or log appropriately
         }
     }
